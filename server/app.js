@@ -17,7 +17,6 @@
   app.use(require('./routes/Topics.routes.js'));
   app.use(require('./routes/Courses_dept.routes.js'));
   // app.use(require('./routes/Instructor_dept.routes'));
-  
 
   app.use('/', (req, res, next) => {
     res.json({
