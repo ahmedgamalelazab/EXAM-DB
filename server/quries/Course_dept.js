@@ -6,31 +6,37 @@ const {
   MSSQLConnection,
 } = require('../database/nativeConnection/dbNativeConnection.js');
 const {
-  CreateSelectAllCoursesProc,
-  CreateInsertCourseProc,
-  CreateUpdateCourseProc,
-  CreateDeleteCourseProc } = require('../procedures/Courses.js');
+  CreateSelectAllCourse_deptProc,
+  CreateInsertCourse_deptProc,
+  CreateUpdateCourse_deptProc,
+  CreateDeleteCourse_deptProc
+ } = require('../procedures/Course_dept');
+
+
+////////////////////////////////////////////////////////////
+///////******************Select ******************//////////
+
 
 /**
- * @description use a stored procedure [selectAllCourses] to return promise of courses records
+ * @description use a stored procedure [selectAllCoursesDept] to return promise of courses records
  * @returns {sql.IResult<any>.recordset}
  */
 
-module.exports.selectAllCourses = async function () {
+module.exports.selectAllCourses_dept = async function () {
   return new Promise(async (resolve, reject) => {
     if (MSSQLConnection.pool.connected) {
       try {
-        await CreateSelectAllCoursesProc();
+        await CreateSelectAllCourse_deptProc();
         const records = await MSSQLConnection.pool
           .request()
           .execute(
-            DBProcedureDictionary.selectAllCourses,
+            DBProcedureDictionary.selectAllCoursesDept,
             (error, records, returnValues) => {
               if (error) {
                 reject(`{
                 error: ${error},
                 object: dbPoolConnection,
-                function:'selectAllCourses'
+                function:'selectAllCourses_dept'
             }`);
                 return;
               } //if error
@@ -41,7 +47,7 @@ module.exports.selectAllCourses = async function () {
         reject(`{
                       error: ${error},
                       object: dbPoolConnection,
-                      function:'selectAllCourses'
+                      function:'selectAllCourses_dept'
                   }`);
       } //end of catch
     } //end of if
@@ -49,7 +55,7 @@ module.exports.selectAllCourses = async function () {
       reject(`{
                   error: 'mssql bd is not connected..',
                   object: dbPoolConnection,
-                  function:'selectAllCourses'
+                  function:'selectAllCourses_dept'
               }`);
     }
   }); //end of promise
@@ -57,36 +63,38 @@ module.exports.selectAllCourses = async function () {
 
 
 
+////////////////////////////////////////////////////////////
+///////******************Insert ******************//////////
+
 /**
- * @desc  use a stored procedure [insertCourses] to return promise of rowsAffected
+ * @desc  use a stored procedure [insertCourseDept] to return promise of rowsAffected
  * @returns {sql.IResult<any>.rowsAffected}
  */
- module.exports.insertCourses = async function (crs_name,crs_total_hours,crs_topic_id) {
-  let crs_name_checked = typeof crs_name === 'string' ? crs_name : null;
-  let total_hours_checked = typeof crs_total_hours === 'number' ? crs_total_hours : null;
-  let crs_topic_id_checked = typeof crs_topic_id === 'number' ? crs_topic_id : null;
-  console.log(typeof crs_total_hours);
-  console.log(typeof crs_topic_id);
-  if (crs_name_checked === null ||total_hours_checked === null || crs_topic_id_checked === null){
-    throw `ERROR WITH ERROR WITH  CRS_NAME PARAM TYPE OR TOTAL_HOURS PARAM TYPE OR TOPIC_ID `;
+
+ module.exports.insertCourse_dept = async function (crs_id,dept_id) {
+  let crs_id_checked = typeof crs_id === 'number' ? crs_id : null;
+  let dept_id_checked = typeof dept_id === 'number' ? dept_id : null;
+  console.log(typeof crs_id);
+  console.log(typeof dept_id);
+  if (crs_id_checked === null ||dept_id_checked === null){
+    throw `ERROR WITH ERROR WITH  CRS_ID PARAM TYPE OR DEPT_ID PARAM TYPE `;
   }
   return new Promise(async (resolve, reject) => {
     if (MSSQLConnection.pool.connected) {
       try {
-        await CreateInsertCourseProc();
+        await CreateInsertCourse_deptProc();
         const records = await MSSQLConnection.pool
           .request()
-          .input('crs_name',crs_name)
-          .input('crs_total_hours',crs_total_hours)
-          .input('crs_topic_id',crs_topic_id)
+          .input('crs_id',crs_id)
+          .input('dept_id',dept_id)
           .execute(
-            DBProcedureDictionary.insertCourse,
+            DBProcedureDictionary.insertCourseDept,
             (error, records, returnValues) => {
               if (error) {
                 reject(`{
                 error: ${error},
                 object: dbPoolConnection,
-                function:${DBProcedureDictionary.insertCourse}
+                function:${DBProcedureDictionary.insertCourseDept}
             }`);
                 return;
               } //if error
@@ -97,7 +105,7 @@ module.exports.selectAllCourses = async function () {
         reject(`{
                       error: ${error},
                       object: dbPoolConnection,
-                      function:'insertCourse'
+                      function:'insertCourseDept'
                   }`);
       } //end of catch
     } //end of if
@@ -105,46 +113,47 @@ module.exports.selectAllCourses = async function () {
       reject(`{
                   error: 'mssql bd is not connected..',
                   object: dbPoolConnection,
-                  function:'insertCourse'
+                  function:'insertCourseDept'
               }`);
     }
   }); //end of promise
 }; //end of exports
 
 
+
+////////////////////////////////////////////////////////////
+///////******************Update ******************//////////
 
 /**
  * @desc  use a stored procedure [updateCourseByID] to return promise of rowsAffected
  * @returns {sql.IResult<any>.rowsAffected}
  */
- module.exports.updateCourses = async function (crs_id ,crs_name,crs_total_hours,crs_topic_id) {
+ module.exports.updateCourse_dept = async function (crs_dept_id ,crs_id,dept_id) {
+  let crs_dept_id_checked = typeof crs_dept_id === 'number' ? crs_dept_id : null;
   let crs_id_checked = typeof crs_id === 'number' ? crs_id : null;
-  let crs_name_checked = typeof crs_name === 'string' ? crs_name : null;
-  let total_hours_checked = typeof crs_total_hours === 'number' ? crs_total_hours : null;
-  let crs_topic_id_checked = typeof crs_topic_id === 'number' ? crs_topic_id : null;
-  // console.log(typeof crs_total_hours);
+  let dept_id_checked = typeof dept_id === 'number' ? dept_id : null;
+   // console.log(typeof crs_total_hours);
   // console.log(typeof crs_topic_id);
-  if (crs_id_checked===null ||crs_name_checked === null ||total_hours_checked === null || crs_topic_id_checked === null  ){
-    throw `ERROR WITH ERROR WITH  CRS_NAME PARAM TYPE OR TOTAL_HOURS PARAM TYPE OR TOPIC_ID OR CRS_ID`;
+  if (crs_id_checked===null ||crs_dept_id_checked === null ||dept_id_checked === null){
+    throw `ERROR WITH ERROR WITH  crs_dept_id PARAM TYPE OR dept_id PARAM TYPE OR CRS_ID`;
   }
   return new Promise(async (resolve, reject) => {
     if (MSSQLConnection.pool.connected) {
       try {
-        await CreateUpdateCourseProc();
+        await CreateUpdateCourse_deptProc();
         const records = await MSSQLConnection.pool
           .request()
+          .input('crs_dept_id',crs_dept_id)
           .input('crs_id',crs_id)
-          .input('crs_name',crs_name)
-          .input('crs_total_hours',crs_total_hours)
-          .input('crs_topic_id',crs_topic_id)
+          .input('dept_id',dept_id)
           .execute(
-            DBProcedureDictionary.updateCourseByID,
+            DBProcedureDictionary.updateCourseDeptByID,
             (error, records, returnValues) => {
               if (error) {
                 reject(`{
                 error: ${error},
                 object: dbPoolConnection,
-                function:${DBProcedureDictionary.updateCourseByID}
+                function:${DBProcedureDictionary.updateCourseDeptByID}
             }`);
                 return;
               } //if error
@@ -155,7 +164,7 @@ module.exports.selectAllCourses = async function () {
         reject(`{
                       error: ${error},
                       object: dbPoolConnection,
-                      function:'updateCourses'
+                      function:'updateCourse_dept'
                   }`);
       } //end of catch
     } //end of if
@@ -163,40 +172,42 @@ module.exports.selectAllCourses = async function () {
       reject(`{
                   error: 'mssql bd is not connected..',
                   object: dbPoolConnection,
-                  function:'updateCourses'
+                  function:'updateCourse_dept'
               }`);
     }
   }); //end of promise
 }; //end of exports
 
+////////////////////////////////////////////////////////////
+///////***Delete ******************/////////////////////////
 
 /**
- * @desc  use a stored procedure [CreateDeleteCourseProc] to return promise of rowsAffected
+ * @desc  use a stored procedure [deleteCourseDeptByID] to return promise of rowsAffected
  * @returns {sql.IResult<any>.rowsAffected}
  */
- module.exports.deleteCourse = async function (crs_id) {
-  let crs_id_checked = typeof Number.parseInt(crs_id) === 'number' ? crs_id : null;
+ module.exports.deleteCourse_dept = async function (crs_dept_id) {
+  let crs_dept_id_checked = typeof Number.parseInt(crs_dept_id) === 'number' ? crs_dept_id : null;
   // console.log(typeof Number.parseInt(crs_id));
-  if (crs_id_checked === null) {
-    throw `ERROR WITH CRS_ID PARAM TYPE`;
+  if (crs_dept_id_checked === null) {
+    throw `ERROR WITH CRS_dept_ID PARAM TYPE`;
   }
   //else
   return new Promise(async (resolve, reject) => {
     if (MSSQLConnection.pool.connected) {
       try {
-        await CreateDeleteCourseProc();
+        await CreateDeleteCourse_deptProc();
         //if created
         const records = await MSSQLConnection.pool
           .request()
-          .input('crs_id', crs_id)
+          .input('crs_dept_id', crs_dept_id)
           .execute(
-            DBProcedureDictionary.deleteCourseByID,
+            DBProcedureDictionary.deleteCourseDeptByID,
             (err, records, returnValue) => {
               if (err) {
                 reject(`{
               error : ${err},
               object : dbPoolConnection,
-              function:${DBProcedureDictionary.deleteCourseByID}
+              function:${DBProcedureDictionary.deleteCourseDeptByID}
                }`);
                 return;
               }
@@ -208,14 +219,14 @@ module.exports.selectAllCourses = async function () {
         reject(`{
                 error : ${err},
                 object : dbPoolConnection,
-                function:${DBProcedureDictionary.deleteCourseByID}
+                function:${DBProcedureDictionary.deleteCourseDeptByID}
             }`);
       }
     } else {
       reject(`{
           error : 'mssql db is not connected ..',
           object : dbPoolConnection,
-          function:${DBProcedureDictionary.deleteCourseByID}
+          function:${DBProcedureDictionary.deleteCourseDeptByID}
       }`);
     }
   });

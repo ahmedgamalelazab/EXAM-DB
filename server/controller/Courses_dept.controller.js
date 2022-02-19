@@ -1,12 +1,18 @@
 const {
-    selectAllCourses,
-    insertCourses,
-    updateCourses,deleteCourse
-  } = require('../quries/Courses.js');
+    selectAllCourses_dept,
+   insertCourse_dept,
+   updateCourse_dept,
+   deleteCourse_dept
+  } = require('../quries/Course_dept.js');
   
-  module.exports.getAllCourses = async (req, res, next) => {
+
+
+  ////////////////////////////////////////////////////////////
+///////******************Get ******************//////////
+
+  module.exports.getAllCoursesDept = async (req, res, next) => {
     try {
-      const result = await selectAllCourses();
+      const result = await selectAllCourses_dept();
       // if all is okay
       res.status(200).json({
         success: true,
@@ -20,43 +26,16 @@ const {
     }
   }; //end of exports
   
-  module.exports.insertCourseController = async (req, res, next) => {
-    const {crs_name, crs_total_hours, crs_topic_id } = req.body;
-    if (crs_name && crs_total_hours && crs_topic_id) {
+  ////////////////////////////////////////////////////////////
+///////******************Insert ******************//////////
+
+  module.exports.insertCourse_deptController = async (req, res, next) => {
+    const {crs_id, dept_id} = req.body;
+    if (crs_id && dept_id) {
       try {
-        const result = await insertCourses(
-          crs_name,
-          crs_total_hours,
-          crs_topic_id
-        );
-        res.status(201).json({
-          success: true,
-          data: result,
-        });
-      } catch (error) {
-        res.status(500).json({
-          success: false,
-          error: error,
-        });
-      }
-    } //end of if
-    else {
-      res.status(500).json({
-        success: false,
-        message: 'error with req.param',
-      });
-    }
-  }; //end of exports
-  
-  module.exports.updateCourseRecordController = async (req, res, next) => {
-    const { crs_id, crs_name, crs_total_hours, crs_topic_id } = req.body;
-    if (crs_id && crs_name && crs_total_hours && crs_topic_id) {
-      try {
-        const result = await updateCourses(
+        const result = await insertCourse_dept(
           crs_id,
-          crs_name,
-          crs_total_hours,
-          crs_topic_id
+          dept_id,
         );
         res.status(201).json({
           success: true,
@@ -77,11 +56,48 @@ const {
     }
   }; //end of exports
   
-    module.exports.deleteCourseRecordController = async (req, res, next) => {
+////////////////////////////////////////////////////////////
+///////******************Update ******************//////////
+
+
+  module.exports.updateCourse_DeptController = async (req, res, next) => {
+    const { crs_dept_id, crs_id, dept_id} = req.body;
+    if (crs_id && crs_dept_id && dept_id) {
+      try {
+        const result = await updateCourse_dept(
+          crs_dept_id,
+          crs_id,
+          dept_id,
+        );
+        res.status(201).json({
+          success: true,
+          data: result,
+        });
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error,
+        });
+      }
+    } //end of if
+    else {
+      res.status(500).json({
+        success: false,
+        message: 'error with req.param',
+      });
+    }
+  }; //end of exports
+  
+
+////////////////////////////////////////////////////////////
+///////******************Delete ******************//////////
+
+
+    module.exports.deleteCourse_deptController = async (req, res, next) => {
     const id = req.params.id;
     if (id) {
       try {
-        const result = await deleteCourse(id);
+        const result = await deleteCourse_dept(id);
         res.status(201).json({
           success: true,
           data: result,

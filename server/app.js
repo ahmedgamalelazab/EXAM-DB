@@ -12,13 +12,12 @@
 
   app.use(express.json());
 
-  app.use(require('./routes/Instructor.routes.js'));
-
-  app.use(require('./routes/student.routes.js'));
-
-  app.use(require('./routes/Departments.routes.js'));
   //reem courses
   app.use(require('./routes/Courses.routes.js'));
+  app.use(require('./routes/Topics.routes.js'));
+  app.use(require('./routes/Courses_dept.routes.js'));
+  // app.use(require('./routes/Instructor_dept.routes'));
+  
 
   app.use('/', (req, res, next) => {
     res.json({
