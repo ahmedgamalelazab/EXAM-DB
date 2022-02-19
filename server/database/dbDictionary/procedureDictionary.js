@@ -1,0 +1,31 @@
+module.exports.DBProcedureDictionary = {
+  ///////////////////////DEPARTMENTS//////////////////////////////////
+  selectAllDepartments: 'selectAllDepartments',
+  insertDepartment: 'insertDepartment',
+  updateDepartmentById: 'updateDepartmentById',
+  deleteDepartmentById: 'deleteDepartmentById',
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  /*Reem*/
+  selectAllCourses: 'selectAllCourses',
+  insertCourse: 'insertCourse',
+  updateCourseByID: 'updateCourseByID',
+  ///////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
+  //yasser
+  selectAllQuestions: 'selectAllQuestions',
+  insertQuestion: 'insertQuestion',
+  updateQuestionById: 'updateQuestionById',
+  deleteQuestionById: 'deleteQuestionById',
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  //ahmed gamal
+  insertInstructorUser: 'insertInstructorUser',
+  getAllInstructorsProc: 'getAllInstructorsProc',
+  deleteInstructorDictionaryProc: 'deleteInstructorDictionaryProc',
+  ////////////////////////////////////////////////////////////////////
+  ///////////////////////////student/////////////////////////////////////////
+  //ahmed gamal
+  insertStudentUser: 'insertStudentUser',
+  getAllStudentsProc: 'getAllStudentsProc',
+};

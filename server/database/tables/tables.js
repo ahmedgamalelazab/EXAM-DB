@@ -1,0 +1,15 @@
+module.exports = {
+  mainUser: 'mainUser',
+  department: 'department',
+  instructor: 'instructor',
+  student: 'student',
+  instructor_student: 'instructor_student',
+  instructor_department: 'instructor_department',
+  course: 'course',
+  course_dept: 'course_dept',
+  topic: 'topic',
+  exam: 'exam',
+  questions: 'questions',
+  student_exam_question: 'student_exam_question',
+  answers: 'answers',
+};
