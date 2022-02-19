@@ -58,9 +58,4 @@ module.exports.DBProcedureDictionary = {
   insertCourseDept: 'insertCourseDept',
   updateCourseDeptByID: 'updateCourseDeptByID',
   deleteCourseDeptByID: 'deleteCourseDeptByID',
-  /////////////////////////////////////////
-  selectAllInstructorDept: "selectAllInstructorDept",
-  insertInstructorDept: "insertInstructorDept",
-  updateInstructorDept: "updateInstructorDept",
-  deleteInstructorDept: "deleteInstructorDept",
 };
