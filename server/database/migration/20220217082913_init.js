@@ -71,7 +71,7 @@ exports.up = async function (knex) {
 
   // reem2
   await knex.schema.createTable(tableNames.questions, function (table) {
-    table.integer('id').primary().notNullable(),
+    table.increments('id').primary().notNullable(),
       table.string('name', 50).notNullable();
     table
       .string('question_type_id', 50)
@@ -231,7 +231,7 @@ exports.up = async function (knex) {
  */
 exports.down = async function (knex) {
   await knex.schema.dropTableIfExists(tableNames.instructor_student);
-  // await knex.schema.dropTableIfExists(tableNames.instructor_department);
+  await knex.schema.dropTableIfExists(tableNames.instructor_department);
   await knex.schema.dropTableIfExists(tableNames.course_dept);
   await knex.schema.dropTableIfExists(tableNames.student_exam_question);
   await knex.schema.dropTableIfExists(tableNames.student);

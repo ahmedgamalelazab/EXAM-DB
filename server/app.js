@@ -13,11 +13,16 @@
   app.use(express.json());
 
   //reem courses
+  app.use(require('./routes/Departments.routes.js'));
+  app.use(require('./routes/Instructor.routes.js'));
+  app.use(require('./routes/student.routes.js'));
   app.use(require('./routes/Courses.routes.js'));
   app.use(require('./routes/Topics.routes.js'));
   app.use(require('./routes/Courses_dept.routes.js'));
-  // app.use(require('./routes/Instructor_dept.routes'));
-
+  app.use(require('./routes/Questions.routes.js'));
+  app.use(require('./routes/Answers.routes.js'));
+  app.use(require('./routes/Exams.routes.js'));
+  app.use(require('./routes/StudentExamQuestions.routes.js'));
   app.use('/', (req, res, next) => {
     res.json({
       message: 'hello world',
