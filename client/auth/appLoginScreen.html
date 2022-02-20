@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Login</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/Google-Style-Login.css" />
+    <link rel="stylesheet" href="../assets/css/quiz.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body>
+    <div class="login-card">
+      <img class="profile-img-card" src="../assets/img/avatar_2x.png" />
+      <p class="profile-name-card">Login to System</p>
+      <form class="form-signin">
+        <span class="reauth-email"> </span
+        ><input
+          class="form-control"
+          type="email"
+          id="inputEmail"
+          required=""
+          placeholder="Username"
+          autofocus=""
+        /><input
+          class="form-control"
+          type="password"
+          id="inputPassword"
+          required=""
+          placeholder="Password"
+        /><button
+          class="btn btn-primary btn-lg d-block btn-signin w-100"
+          type="submit"
+        >
+          Sign in
+        </button>
+        <div id="loading-spinner-state" class="container text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+        </div>
+        <div id="errorMessageComponent" class="errorMessage"> invalid email or password</div>
+      </form>     
+    </div>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="../assets/js/timer.js"></script> -->
+    <script type="module" src="../js/auth.js"></script>
+  </body>
+</html>

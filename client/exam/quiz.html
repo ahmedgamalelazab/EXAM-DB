@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ExamSys</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/Google-Style-Login.css">
+    <link rel="stylesheet" href="../assets/css/quiz.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body class="text-start main" style="background: var(--bs-gray-300);"><form name="Exam" class="exam">
+
+
+  <div class="header-container">
+    <!-- Exam Header -->
+    <div class="page-header">
+      <h1 id="exam-header">Exam for <span id="subject"> OOP </span><br>
+    </div>
+    <!-- Timer  -->
+    <input type="hidden" id="set-time" value="1" />
+    <div id="countdown">
+
+      <div id='tiles' class="color-full"></div>
+      <div class="countdown-label">Time Remaining</div>
+    </div>
+  </div>
+  <div class="wrapper container">
+
+
+
+    <div class="quiz-box quiz-1">
+      <h2 class="quiz-question">1. What is your eye colour?</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q1"> Light blue</label>
+        <label><input type="radio" name="q1"> Blue, Grey or Green</label>
+        <label><input type="radio" name="q1"> Dark</label>
+        <label><input type="radio" name="q1"> Brown</label>
+      </span>
+    </div>
+
+    <div class="quiz-box quiz-2">
+      <h2 class="quiz-question">2. Your natural hair colour</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q2"> Sandy Red</label>
+        <label><input type="radio" name="q2"> Blonde</label>
+        <label><input type="radio" name="q2"> Chestnut or Dark blonde</label>
+        <label><input type="radio" name="q2"> Brown</label>
+      </span>
+    </div>
+
+    <div class="quiz-box quiz-3">
+      <h2 class="quiz-question">3. Your skin colour (unexposed areas)</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q3"> Reddish</label>
+        <label><input type="radio" name="q3"> Pale</label>
+        <label><input type="radio" name="q3"> Beige or Olive</label>
+        <label><input type="radio" name="q3"> Brown</label>
+      </span>
+    </div>
+
+
+    <div class="quiz-box quiz-4">
+      <h2 class="quiz-question">4. Freckles (unexposed areas)</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q4"> Many</label>
+        <label><input type="radio" name="q4"> Several</label>
+        <label><input type="radio" name="q4"> Few</label>
+        <label><input type="radio" name="q4"> Rare</label>
+      </span>
+    </div>
+
+
+    <div class="quiz-box quiz-5">
+      <h2 class="quiz-question">5. How does your skin respond to the sun?</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q5"> Always burns, blisters and peels</label>
+        <label><input type="radio" name="q5"> Often burns, blisters and peels</label>
+        <label><input type="radio" name="q5"> Burns moderately</label>
+        <label><input type="radio" name="q5"> Burns rarely, if at all</label>
+      </span>
+    </div>
+
+
+    <div class="quiz-box quiz-6">
+      <h2 class="quiz-question">6. Does your skin tan?</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q6"> Never - I always burn</label>
+        <label><input type="radio" name="q6"> Seldom</label>
+        <label><input type="radio" name="q6"> Sometimes</label>
+        <label><input type="radio" name="q6"> Often</label>
+      </span>
+    </div>
+
+
+    <div class="quiz-box quiz-7">
+      <h2 class="quiz-question">7. How deeply do you tan?</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q7"> Not at all or very little</label>
+        <label><input type="radio" name="q7"> Lightly</label>
+        <label><input type="radio" name="q7"> Moderately</label>
+        <label><input type="radio" name="q7"> Deeply</label>
+      </span>
+    </div>
+
+
+    <div class="quiz-box quiz-8">
+      <h2 class="quiz-question">8. How sensitive is your face to the sun?</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q8"> Very sensitive</label>
+        <label><input type="radio" name="q8"> Sensitive</label>
+        <label><input type="radio" name="q8"> Normal</label>
+        <label><input type="radio" name="q8"> Resistant</label>
+      </span>
+    </div>
+
+
+    <div class="quiz-box quiz-9">
+      <h2 class="quiz-question">9. How often do you tan?</h2>
+      <span class="quiz-answer">
+        <label><input type="radio" name="q9"> Never</label>
+        <label><input type="radio" name="q9"> Seldom</label>
+        <label><input type="radio" name="q9"> Sometimes</label>
+        <label><input type="radio" name="q9"> Often</label>
+      </span>
+    </div>
+    <hr>
+    <div class="submit">
+      <input class="btn btn-primary" type="button" name="result" value="Submit">
+    </div>
+    <hr>
+  </div><!-- /.container -->
+</form>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/timer.js"></script>
+</body>
+
+</html>

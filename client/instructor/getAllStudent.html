@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>student</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%205%20Brands.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%205%20Free.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%206%20Brands.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%206%20Free.css" />
+    <link rel="stylesheet" href="../assets/css/FontAwesome.css" />
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/Dark-NavBar-1.css" />
+    <link rel="stylesheet" href="../assets/css/Dark-NavBar-2.css" />
+    <link rel="stylesheet" href="../assets/css/Dark-NavBar.css" />
+    <link rel="stylesheet" href="../assets/css/Sidebar-Menu-1.css" />
+    <link rel="stylesheet" href="../assets/css/Sidebar-Menu.css" />
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="../js/getStuScript.js"></script>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button"
+            style="height: 80px; background-color: #37434d; color: #ffffff">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><button id="custum-button" data-bs-toggle="" data-bs-target="">
+                        <span class="visually-hidden">Toggle navigation</span><span
+                            class="navbar-toggler-icon"></span></button><i class="fa fa-globe"></i> Antariksh</a><button
+                    class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
+                    <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navcol-1" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"></li>
+                        <li class="nav-item"></li>
+                        <li class="nav-item"></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color: #ffffff" href="#"><i
+                                    class="fa fa-user-circle-o"></i> Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color: #ffffff" href="#"><i
+                                    class="fa fa-sign-in"></i> Sign In</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="row parent">
+        <div id="wrapper" class="col-md-3 col-sm-1">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="instructor.html"><span><i class="fa-solid fa-gauge-high"></i></span>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="addStudent.html"><span><i class="fa-solid fa-user-pen"></i></span>AddStudent</a>
+                    </li>
+                    <li>
+                        <a href="getAllStudent.html">
+                            <span><i class="fa-solid fa-users"></i></span>GetAllStudent</a>
+
+                    </li>
+                    <li>
+                        <a href="addExam.html"><span><i class="fa-solid fa-pen-to-square"></i></span>AddExam</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tabel-stu-data col-md-8 col-sm-11">
+            
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                      <th>userId</th>
+                      <th>ID</th>
+                      <th>title</th>
+                      <th>completed</th>
+                    </tr>
+                </thead>
+               
+                </table>
+                
+                
+        </div>
+    </div>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/Sidebar-Menu.js"></script>
+</body>
+
+</html>

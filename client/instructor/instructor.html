@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>instructor</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%205%20Brands.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%205%20Free.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%206%20Brands.css" />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%206%20Free.css" />
+    <link rel="stylesheet" href="../assets/css/FontAwesome.css" />
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/Dark-NavBar-1.css" />
+    <link rel="stylesheet" href="../assets/css/Dark-NavBar-2.css" />
+    <link rel="stylesheet" href="../assets/css/Dark-NavBar.css" />
+    <link rel="stylesheet" href="../assets/css/Sidebar-Menu-1.css" />
+    <link rel="stylesheet" href="../assets/css/Sidebar-Menu.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#custum-button").on("click", function () {
+          $("#sidebar-wrapper").toggle();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <nav
+        class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button"
+        style="height: 80px; background-color: #37434d; color: #ffffff"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><button id="custum-button" data-bs-toggle="" data-bs-target="">
+              <span class="visually-hidden">Toggle navigation</span
+              ><span class="navbar-toggler-icon"></span></button
+            ><i class="fa fa-globe"></i>DB-EXAM-PLATFORM</a
+          ><button
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#navcol-1"
+          >
+            <span class="visually-hidden">Toggle navigation</span
+            ><span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="navcol-1" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"></li>
+              <li class="nav-item"></li>
+              <li class="nav-item"></li>
+              <li class="nav-item">
+                <a class="nav-link active" style="color: #ffffff" href="#"
+                  ><i class="fa fa-user-circle-o"></i>instructor name</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" style="color: #ffffff" href="#"
+                  ><i class="fa fa-sign-in"></i> Sign Out</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="row parent" >
+      <div id="wrapper" class="col-md-4 col-sm-1">
+        <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+            <li>
+              <a href="instructor.html"
+                ><span><i class="fa-solid fa-gauge-high"></i></span>Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="addStudent.html">
+              <span><i class="fa-solid fa-user-pen"></i></span>AddStudent</a>
+              
+            </li>
+            <li>
+              <a href="getAllStudent.html">
+              <span><i class="fa-solid fa-users"></i></span>GetAllStudent</a>
+              
+            </li>
+            <li>
+              <a href="addExam.html"
+                ><span><i class="fa-solid fa-pen-to-square"></i></span
+                >AddExam</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="child2 col-md-8 col-sm-11">
+        <h1>Reports</h1>
+
+        <div class="report row " >
+          <h4 class="col-sm-8">student report acc dept</h4>
+          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
+          <button id="btn1" type="button" class="btn btn-success cust-btn col-sm-2">Report</button>
+        </div>
+
+        <div class="report row ">
+          <h4 class="col-sm-8">topic report</h4>
+          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
+          <button id="btn2" type="button" class="btn btn-success cust-btn col-sm-2">Report</button>
+        </div>
+
+        <div class="report row ">
+          <h4 class="col-sm-8">exam student report</h4>
+          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
+          <button id="btn3" type="button" class="btn btn-success cust-btn col-sm-2">Report</button>
+        </div>
+
+        <div class="report row ">
+          <h4 class="col-sm-8">exame Qus report</h4>
+          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
+          <button id="btn4" type="button" class="btn btn-success cust-btn col-sm-2">Report</button>
+        </div>
+
+      </div>
+    </div>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/Sidebar-Menu.js"></script>
+  </body>
+</html>

@@ -6,6 +6,7 @@
   const express = require('express');
   require('colors');
   const app = express();
+  const cors = require('cors');
 
   const pool =
     await require('./database/nativeConnection/dbNativeConnection.js').MSSQLConnection.initMSSQLConnection();
@@ -14,6 +15,7 @@
     console.log(`mssql data base connected...`.bgGreen.underline.black.bold);
   }
 
+  app.use(cors());
   app.use(express.json());
 
   app.use(require('./routes/auth.routes.js'));

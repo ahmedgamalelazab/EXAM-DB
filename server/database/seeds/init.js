@@ -11,7 +11,7 @@ exports.seed = async function (knex) {
     id: knex.raw('NEWID()'),
     first_name: 'ITIAdmins',
     last_name: 'ITITeamAdmins',
-    email: 'admin',
+    email: 'admin@admin.com',
     password: 'admin',
   });
   await knex(tableNames.department).del();

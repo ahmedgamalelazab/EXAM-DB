@@ -34,6 +34,7 @@ module.exports.loginUserAndDispatch = async (req, res, next) => {
         res.status(201).json({
           success: true,
           token: token,
+          user: 'admin',
         });
         return;
       } else {
@@ -49,6 +50,7 @@ module.exports.loginUserAndDispatch = async (req, res, next) => {
             res.status(201).json({
               success: true,
               token: token,
+              user: 'instructor',
             });
             return;
           } else {
@@ -71,6 +73,7 @@ module.exports.loginUserAndDispatch = async (req, res, next) => {
               res.status(201).json({
                 success: true,
                 token: token,
+                user: 'student',
               });
               return;
             } else {
