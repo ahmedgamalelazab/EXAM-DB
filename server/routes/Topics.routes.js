@@ -1,17 +1,28 @@
 const Router = require('express').Router();
 const {
-    getAllTopics,
-    insertTopicsController,
-    updateTopicRecordController,
-    deleteTopicController,
+  getAllTopics,
+  insertTopicsController,
+  updateTopicRecordController,
+  deleteTopicController,
 } = require('../controller/Topics.controller');
 
-Router.route('/ExamApp/api/v1/Topics').get(getAllTopics);
+const { authMiddleWere } = require('../middleware/auth.js');
 
-Router.route('/ExamApp/api/v1/Topics').post(insertTopicsController);
+Router.route('/ExamApp/api/v1/Topics').get(authMiddleWere, getAllTopics);
 
-Router.route('/ExamApp/api/v1/Topics').put(updateTopicRecordController);
+Router.route('/ExamApp/api/v1/Topics').post(
+  authMiddleWere,
+  insertTopicsController
+);
 
-Router.route('/ExamApp/api/v1/Topics/:id').delete(deleteTopicController);
+Router.route('/ExamApp/api/v1/Topics').put(
+  authMiddleWere,
+  updateTopicRecordController
+);
+
+Router.route('/ExamApp/api/v1/Topics/:id').delete(
+  authMiddleWere,
+  deleteTopicController
+);
 
 module.exports = Router;

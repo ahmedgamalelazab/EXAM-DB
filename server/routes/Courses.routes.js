@@ -3,11 +3,22 @@ const {
   getAllCourses,
   insertCourseController,
   updateCourseRecordController,
-  deleteCourseRecordController
+  deleteCourseRecordController,
 } = require('../controller/Courses.controller.js');
 
-Router.route('/ExamApp/api/v1/Courses').get(getAllCourses);
-Router.route('/ExamApp/api/v1/Courses').post(insertCourseController);
-Router.route('/ExamApp/api/v1/Courses').put(updateCourseRecordController);
-Router.route('/ExamApp/api/v1/Courses/:id').delete(deleteCourseRecordController);
+const { authMiddleWere } = require('../middleware/auth.js');
+
+Router.route('/ExamApp/api/v1/Courses').get(authMiddleWere, getAllCourses);
+Router.route('/ExamApp/api/v1/Courses').post(
+  authMiddleWere,
+  insertCourseController
+);
+Router.route('/ExamApp/api/v1/Courses').put(
+  authMiddleWere,
+  updateCourseRecordController
+);
+Router.route('/ExamApp/api/v1/Courses/:id').delete(
+  authMiddleWere,
+  deleteCourseRecordController
+);
 module.exports = Router;

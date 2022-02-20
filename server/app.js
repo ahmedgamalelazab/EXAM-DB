@@ -1,4 +1,8 @@
 (async function () {
+  const path = require('path');
+  require('dotenv').config({
+    path: path.join('./', 'config.env'),
+  });
   const express = require('express');
   require('colors');
   const app = express();
@@ -12,8 +16,8 @@
 
   app.use(express.json());
 
-  //reem courses
-  app.use(require('./routes/Departments.routes.js'));
+  app.use(require('./routes/auth.routes.js'));
+  app.use(require('./routes/Departments.routes.js')); //reem courses
   app.use(require('./routes/Instructor.routes.js'));
   app.use(require('./routes/student.routes.js'));
   app.use(require('./routes/Courses.routes.js'));

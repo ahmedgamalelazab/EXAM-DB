@@ -4,6 +4,9 @@ const {
   deleteInstructorRecord,
 } = require('../quries/Instructor.js');
 const { request, response } = require('express');
+const { development } = require('../knexfile.js');
+const knexQueryBuilderHelper = require('knex').knex(development);
+const tableNames = require('../database/tables/tables.js');
 
 /**
  * @desc use incoming request from the front side and return the rows effected from the db
@@ -11,21 +14,8 @@ const { request, response } = require('express');
  * @param {response} res
  */
 module.exports.insertInstructorController = async (req, res, next) => {
-  const {
-    first_name,
-    last_name,
-    email,
-    password,
-    phone_number,
-    salary,
-    crs_id,
-    dept_id,
-  } = req.body;
-
-  //TODO check for the incoming request params
-
-  try {
-    const result = await insertInstructorRecord(
+  if (req.payload.userType === 'admin') {
+    const {
       first_name,
       last_name,
       email,
@@ -33,18 +23,54 @@ module.exports.insertInstructorController = async (req, res, next) => {
       phone_number,
       salary,
       crs_id,
-      dept_id
-    );
-    //if all are ok !
-    res.status(201).json({
-      success: true,
-      data: result,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
+      dept_id,
+    } = req.body;
+
+    //TODO check for the incoming request params
+
+    try {
+      //TODO check for the exist email if there's email then tell him email exist else login
+
+      //search fro the email
+      let user = await knexQueryBuilderHelper(tableNames.mainUser).where({
+        email: email,
+      });
+
+      if (user.length !== 0) {
+        //email exist
+        res.status(401).json({
+          success: false,
+          message: 'this email registered already !',
+        });
+        return;
+      }
+
+      const result = await insertInstructorRecord(
+        first_name,
+        last_name,
+        email,
+        password,
+        phone_number,
+        salary,
+        crs_id,
+        dept_id
+      );
+      //if all are ok !
+      res.status(201).json({
+        success: true,
+        data: result,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        success: false,
+        error: err,
+      });
+    }
+  } else {
+    res.status(403).json({
       success: false,
-      error: err,
+      message: 'forbidden',
     });
   }
 };

@@ -6,6 +6,14 @@ const tableNames = require('../tables/tables.js');
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
+  await knex(tableNames.mainUser).del();
+  await knex(tableNames.mainUser).insert({
+    id: knex.raw('NEWID()'),
+    first_name: 'ITIAdmins',
+    last_name: 'ITITeamAdmins',
+    email: 'admin',
+    password: 'admin',
+  });
   await knex(tableNames.department).del();
   await knex(tableNames.department).insert([
     { name: 'Mobile Cross Platform development' },

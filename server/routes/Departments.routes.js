@@ -6,15 +6,26 @@ const {
   updateDepartmentRecordController,
 } = require('../controller/Departments.controller.js');
 
-Router.route('/ExamApp/api/v1/Departments').get(getAllDepartments);
+const { authMiddleWere } = require('../middleware/auth.js');
 
-Router.route('/ExamApp/api/v1/Departments').post(insertDepartmentController);
+//only the admin will have the authorization of doing this operations on the departments
+Router.route('/ExamApp/api/v1/Departments').get(
+  authMiddleWere,
+  getAllDepartments
+);
+
+Router.route('/ExamApp/api/v1/Departments').post(
+  authMiddleWere,
+  insertDepartmentController
+);
 
 Router.route('/ExamApp/api/v1/Departments').put(
+  authMiddleWere,
   updateDepartmentRecordController
 );
 
 Router.route('/ExamApp/api/v1/Departments/:id').delete(
+  authMiddleWere,
   deleteDepartmentController
 );
 

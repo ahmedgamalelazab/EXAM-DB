@@ -1,10 +1,12 @@
 const {
-    selectAllCourses,
-    insertCourses,
-    updateCourses,deleteCourse
-  } = require('../quries/Courses.js');
-  
-  module.exports.getAllCourses = async (req, res, next) => {
+  selectAllCourses,
+  insertCourses,
+  updateCourses,
+  deleteCourse,
+} = require('../quries/Courses.js');
+
+module.exports.getAllCourses = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     try {
       const result = await selectAllCourses();
       // if all is okay
@@ -18,10 +20,17 @@ const {
         error: error,
       });
     }
-  }; //end of exports
-  
-  module.exports.insertCourseController = async (req, res, next) => {
-    const {crs_name, crs_total_hours, crs_topic_id } = req.body;
+  } else {
+    res.status(403).json({
+      success: false,
+      message: forbidden,
+    });
+  }
+}; //end of exports
+
+module.exports.insertCourseController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
+    const { crs_name, crs_total_hours, crs_topic_id } = req.body;
     if (crs_name && crs_total_hours && crs_topic_id) {
       try {
         const result = await insertCourses(
@@ -46,9 +55,16 @@ const {
         message: 'error with req.param',
       });
     }
-  }; //end of exports
-  
-  module.exports.updateCourseRecordController = async (req, res, next) => {
+  } else {
+    res.status(403).json({
+      success: false,
+      message: forbidden,
+    });
+  }
+}; //end of exports
+
+module.exports.updateCourseRecordController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     const { crs_id, crs_name, crs_total_hours, crs_topic_id } = req.body;
     if (crs_id && crs_name && crs_total_hours && crs_topic_id) {
       try {
@@ -75,9 +91,16 @@ const {
         message: 'error with req.param',
       });
     }
-  }; //end of exports
-  
-    module.exports.deleteCourseRecordController = async (req, res, next) => {
+  } else {
+    res.status(403).json({
+      success: false,
+      message: forbidden,
+    });
+  }
+}; //end of exports
+
+module.exports.deleteCourseRecordController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     const id = req.params.id;
     if (id) {
       try {
@@ -99,4 +122,10 @@ const {
         message: 'error with req.param',
       });
     }
-  }; //end of exports
+  } else {
+    res.status(403).json({
+      success: false,
+      message: forbidden,
+    });
+  }
+}; //end of exports

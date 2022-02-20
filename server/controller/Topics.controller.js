@@ -1,11 +1,12 @@
 const {
-    selectAllTopics,
-    insertTopicsRecord,
-    updateTopic,
-    deleteTopic
-  } = require('../quries/Topics');
-  
-  module.exports.getAllTopics = async (req, res, next) => {
+  selectAllTopics,
+  insertTopicsRecord,
+  updateTopic,
+  deleteTopic,
+} = require('../quries/Topics');
+
+module.exports.getAllTopics = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     try {
       const result = await selectAllTopics();
       //if all went well
@@ -19,11 +20,18 @@ const {
         error: err,
       });
     }
-  };
-  
-  module.exports.insertTopicsController = async (req, res, next) => {
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+};
+
+module.exports.insertTopicsController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     const { topic_name } = req.body;
-  
+
     if (topic_name) {
       try {
         const result = await insertTopicsRecord(topic_name);
@@ -43,12 +51,21 @@ const {
         success: false,
         message: 'error with req.param',
       });
+      return;
     }
-  };
-  
-  module.exports.updateTopicRecordController = async (req, res, next) => {
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+    return;
+  }
+};
+
+module.exports.updateTopicRecordController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     const { id, topic_name } = req.body;
-  
+
     if (id && topic_name) {
       try {
         const result = await updateTopic(id, topic_name);
@@ -69,11 +86,19 @@ const {
         message: 'error with req.param',
       });
     }
-  };
-  
-  module.exports.deleteTopicController = async (req, res, next) => {
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+    return;
+  }
+};
+
+module.exports.deleteTopicController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     const id = req.params.id;
-  
+
     if (id) {
       try {
         const result = await deleteTopic(id);
@@ -93,6 +118,13 @@ const {
         success: false,
         message: 'error with req.param',
       });
+      return;
     }
-  };
-  
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+    return;
+  }
+};

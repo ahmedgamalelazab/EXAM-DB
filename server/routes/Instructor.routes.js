@@ -5,14 +5,25 @@ const {
   deleteInstructorController,
 } = require('../controller/Instructor.controller.js');
 
-Router.route('/ExamApp/api/v1/Instructor').get(getAllInstructorsController);
+const { authMiddleWere } = require('../middleware/auth.js');
 
-Router.route('/ExamApp/api/v1/Instructor').post(insertInstructorController);
+Router.route('/ExamApp/api/v1/Instructor').get(
+  authMiddleWere,
+  getAllInstructorsController
+);
+
+Router.route('/ExamApp/api/v1/Instructor').post(
+  authMiddleWere,
+  insertInstructorController
+);
 
 // Router.route('/ExamApp/api/v1/Instructor').put(
 //   updateDepartmentRecordController
 // );
 
-Router.route('/ExamApp/api/v1/Instructor').delete(deleteInstructorController);
+Router.route('/ExamApp/api/v1/Instructor').delete(
+  authMiddleWere,
+  deleteInstructorController
+);
 
 module.exports = Router;
