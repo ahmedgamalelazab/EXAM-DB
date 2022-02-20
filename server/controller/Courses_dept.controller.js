@@ -1,16 +1,15 @@
 const {
-    selectAllCourses_dept,
-   insertCourse_dept,
-   updateCourse_dept,
-   deleteCourse_dept
-  } = require('../quries/Course_dept.js');
-  
+  selectAllCourses_dept,
+  insertCourse_dept,
+  updateCourse_dept,
+  deleteCourse_dept,
+} = require('../quries/Course_dept.js');
 
-
-  ////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 ///////******************Get ******************//////////
 
-  module.exports.getAllCoursesDept = async (req, res, next) => {
+module.exports.getAllCoursesDept = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     try {
       const result = await selectAllCourses_dept();
       // if all is okay
@@ -24,19 +23,23 @@ const {
         error: error,
       });
     }
-  }; //end of exports
-  
-  ////////////////////////////////////////////////////////////
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+}; //end of exports
+
+////////////////////////////////////////////////////////////
 ///////******************Insert ******************//////////
 
-  module.exports.insertCourse_deptController = async (req, res, next) => {
-    const {crs_id, dept_id} = req.body;
+module.exports.insertCourse_deptController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
+    const { crs_id, dept_id } = req.body;
     if (crs_id && dept_id) {
       try {
-        const result = await insertCourse_dept(
-          crs_id,
-          dept_id,
-        );
+        const result = await insertCourse_dept(crs_id, dept_id);
         res.status(201).json({
           success: true,
           data: result,
@@ -54,21 +57,23 @@ const {
         message: 'error with req.param',
       });
     }
-  }; //end of exports
-  
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+}; //end of exports
+
 ////////////////////////////////////////////////////////////
 ///////******************Update ******************//////////
 
-
-  module.exports.updateCourse_DeptController = async (req, res, next) => {
-    const { crs_dept_id, crs_id, dept_id} = req.body;
+module.exports.updateCourse_DeptController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
+    const { crs_dept_id, crs_id, dept_id } = req.body;
     if (crs_id && crs_dept_id && dept_id) {
       try {
-        const result = await updateCourse_dept(
-          crs_dept_id,
-          crs_id,
-          dept_id,
-        );
+        const result = await updateCourse_dept(crs_dept_id, crs_id, dept_id);
         res.status(201).json({
           success: true,
           data: result,
@@ -86,14 +91,19 @@ const {
         message: 'error with req.param',
       });
     }
-  }; //end of exports
-  
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+}; //end of exports
 
 ////////////////////////////////////////////////////////////
 ///////******************Delete ******************//////////
 
-
-    module.exports.deleteCourse_deptController = async (req, res, next) => {
+module.exports.deleteCourse_deptController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
     const id = req.params.id;
     if (id) {
       try {
@@ -115,4 +125,10 @@ const {
         message: 'error with req.param',
       });
     }
-  }; //end of exports
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+}; //end of exports
