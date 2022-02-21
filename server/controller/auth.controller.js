@@ -46,6 +46,22 @@ module.exports.loginUserAndDispatch = async (req, res, next) => {
         if (instructorResult.length !== 0) {
           //user is a instructor
           if (user.email === email && user.password === password) {
+            //if the user 100% is instructor
+            //then we wanna to payload with the whole user data
+            const loggedInstructor = await knexQueryBuilderHelper(
+              tableNames.instructor
+            ).where({
+              user_id: user.id,
+            });
+            //resolving the instructor data
+            user.ins_id = loggedInstructor[0].id;
+            user.ins_phone_number = loggedInstructor[0].phone_number;
+            const target_dept = await knexQueryBuilderHelper(
+              tableNames.department
+            ).where({
+              id: loggedInstructor[0].dept_id,
+            });
+            user.ins_department = target_dept[0].name;
             const token = await generateToken(user, 'instructor');
             res.status(201).json({
               success: true,
@@ -69,6 +85,14 @@ module.exports.loginUserAndDispatch = async (req, res, next) => {
           if (studentResult.length !== 0) {
             //user is student
             if (user.email === email && user.password === password) {
+              user.student_id = studentResult[0].id;
+              user.student_phone_number = studentResult[0].phone_number;
+              const target_dept = await knexQueryBuilderHelper(
+                tableNames.department
+              ).where({
+                id: studentResult[0].dept_id,
+              });
+              user.student_department = target_dept[0].name;
               const token = await generateToken(user, 'student');
               res.status(201).json({
                 success: true,
