@@ -12,6 +12,7 @@ console.log('hello auth');
 const userForm = document.forms[0];
 const email = document.getElementById('inputEmail');
 const password = document.getElementById('inputPassword');
+import { serverConfig } from '../serverConfig/serverConfig.js';
 
 //UI Components
 const loadUIComponent = document.getElementById('loading-spinner-state');
@@ -25,7 +26,7 @@ userForm.onsubmit = async function (event) {
     password: password.value,
   };
 
-  const reqUrl = 'http://localhost:5555/ExamApp/api/v1/login';
+  const reqUrl = `${serverConfig.backendServer}/ExamApp/api/v1/login`;
 
   console.log(reqPayload);
   console.log(reqUrl);

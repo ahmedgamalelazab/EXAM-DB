@@ -16,14 +16,14 @@ const tableNames = require('../database/tables/tables.js');
 module.exports.insertInstructorController = async (req, res, next) => {
   if (req.payload.userType === 'admin') {
     const {
+      crs_id,
+      dept_id,
       first_name,
       last_name,
       email,
       password,
       phone_number,
       salary,
-      crs_id,
-      dept_id,
     } = req.body;
 
     //TODO check for the incoming request params

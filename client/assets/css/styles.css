@@ -5,8 +5,7 @@
 }
 body {
   background-color: #F7F7F7;
-  margin: 0;
-  padding: 20px;
+
 }
 
 #custum-button {
@@ -35,12 +34,12 @@ body {
   -o-border-radius: 5px;
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .navbar {
     height: 225px !important;
     
   }
-}
+} */
 
 .navigation-clean-button {
   background-color: green !important;

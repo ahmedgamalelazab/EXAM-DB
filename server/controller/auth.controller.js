@@ -3,9 +3,9 @@ const {
 } = require('../database/nativeConnection/dbNativeConnection.js');
 const { request, response } = require('express');
 const { generateToken } = require('../utils/tokenGeneration.js');
-const { development } = require('../knexfile.js');
-//! warning this not gonna work but only in the development if u wanna in production refactor the code
-const knexQueryBuilderHelper = require('knex').knex(development);
+const {
+  knexQueryBuilderHelper,
+} = require('../database/knexConnection/KnexConnection.js');
 const tableNames = require('../database/tables/tables.js');
 /**
  * @description login and bring to the response the token that will authorize the user to the apis

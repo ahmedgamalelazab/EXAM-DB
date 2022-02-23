@@ -6,12 +6,18 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>admin</title>
+    <title>student</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/Font Awesome 5 Brands.css" />
-    <link rel="stylesheet" href="../assets/css/Font Awesome 5 Free.css" />
-    <link rel="stylesheet" href="../assets/css/Font Awesome 6 Brands.css" />
-    <link rel="stylesheet" href="../assets/css/Font Awesome 6 Free.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/css/Font%20Awesome%205%20Brands.css"
+    />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%205%20Free.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/css/Font%20Awesome%206%20Brands.css"
+    />
+    <link rel="stylesheet" href="../assets/css/Font%20Awesome%206%20Free.css" />
     <link rel="stylesheet" href="../assets/css/FontAwesome.css" />
     <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/css/all.min.css" />
@@ -20,15 +26,24 @@
     <link rel="stylesheet" href="../assets/css/Dark-NavBar.css" />
     <link rel="stylesheet" href="../assets/css/Sidebar-Menu-1.css" />
     <link rel="stylesheet" href="../assets/css/Sidebar-Menu.css" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+    />
     <link rel="stylesheet" href="../assets/css/styles.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $('#custum-button').on('click', function () {
-          $('#sidebar-wrapper').toggle();
-        });
-      });
-    </script>
+    <script
+      type="text/javascript"
+      language="javascript"
+      src="https://code.jquery.com/jquery-3.3.1.js"
+    ></script>
+    <script
+      type="text/javascript"
+      language="javascript"
+      src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"
+    ></script>
+    <script type="module" src="../js/admin/adminGetAllStudents.js"></script>
   </head>
 
   <body>
@@ -49,7 +64,7 @@
     </div>
 
     <div class="row parent">
-      <div id="wrapper" class="col-md-4 col-sm-1">
+      <div id="wrapper" class="col-md-3 col-sm-1">
         <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li>
@@ -59,8 +74,7 @@
             </li>
             <li>
               <a href="addInstructor.html"
-                ><span><i class="fa-solid fa-add"></i></span>Add
-                Instructor</a
+                ><span><i class="fa-solid fa-add"></i></span>Add Instructor</a
               >
             </li>
             <li>
@@ -75,75 +89,33 @@
             </li>
             <li>
               <a href="getDepartment.html"
-                ><span><i class="fa-solid fa-house"></i></span
-                >Departments</a
+                ><span><i class="fa-solid fa-house"></i></span>Departments</a
               >
             </li>
             <li>
               <a href="getAllCourses.html"
-                ><span><i class="fa-solid fa-book-bible"></i></span
-                >Courses</a
+                ><span><i class="fa-solid fa-book-bible"></i></span>Courses</a
               >
             </li>
             <li>
               <a href="../auth/appLoginScreen.html"
-                ><span><i class="fa-solid fa-sign-out"></i></span
-                >Log out</a
+                ><span><i class="fa-solid fa-sign-out"></i></span>Log out</a
               >
             </li>
           </ul>
         </div>
       </div>
-      <div class="child2 col-md-8 col-sm-11">
-        <h1>Reports</h1>
-
-        <div class="report row">
-          <h4 class="col-sm-8">student report acc dept</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn1"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
-        </div>
-
-        <div class="report row">
-          <h4 class="col-sm-8">topic report</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn2"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
-        </div>
-
-        <div class="report row">
-          <h4 class="col-sm-8">exam student report</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn3"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
-        </div>
-
-        <div class="report row">
-          <h4 class="col-sm-8">exame Qus report</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn4"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
-        </div>
+      <div class="tabel-stu-data col-md-8 col-sm-11">
+        <table id="example" class="display" style="width: 100%">
+          <thead>
+            <tr>
+              <th>userId</th>
+              <th>first name</th>
+              <th>last name</th>
+              <th>email address</th>
+            </tr>
+          </thead>
+        </table>
       </div>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>

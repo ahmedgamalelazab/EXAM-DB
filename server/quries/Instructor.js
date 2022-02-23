@@ -35,15 +35,26 @@ module.exports.insertInstructorRecord = async function (
   crs_id,
   dept_id
 ) {
+  console.log(typeof first_name);
+  console.log(typeof last_name);
+  console.log(typeof email);
+  console.log(typeof password);
+  console.log(typeof phone_number);
+  console.log(typeof salary);
+  console.log(typeof crs_id);
+  console.log(typeof dept_id);
   let first_name_checked = typeof first_name === 'string' ? first_name : null;
   let last_name_checked = typeof last_name === 'string' ? last_name : null;
   let email_checked = typeof email === 'string' ? email : null;
   let password_checked = typeof password === 'string' ? password : null;
   let phone_number_checked =
     typeof phone_number === 'string' ? phone_number : null;
-  let salary_checked = typeof salary === 'number' ? salary : null;
-  let crs_id_checked = typeof crs_id === 'number' ? crs_id : null;
-  let dept_id_checked = typeof dept_id === 'number' ? dept_id : null;
+  let salary_checked =
+    typeof Number.parseInt(salary) === 'number' ? salary : null;
+  let crs_id_checked =
+    typeof Number.parseInt(crs_id) === 'number' ? crs_id : null;
+  let dept_id_checked =
+    typeof Number.parseInt(dept_id) === 'number' ? dept_id : null;
 
   if (
     email_checked === null ||

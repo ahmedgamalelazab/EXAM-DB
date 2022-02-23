@@ -1,5 +1,6 @@
 import { Request, RequestHandler } from '../lib/RequestChainer.js';
 import { delay } from '../lib/NetworkResDelayer.js';
+import { serverConfig } from '../serverConfig/serverConfig.js';
 class AdminRequestHandler extends RequestHandler {
   constructor(locationObj, loadingUIComponent, errorMessageUIComponent) {
     super(locationObj, loadingUIComponent, errorMessageUIComponent);
@@ -31,16 +32,18 @@ class AdminRequestHandler extends RequestHandler {
             if (success) {
               //TODO store the token in localstorage
               const { token, user } = formattedResponse;
+              console.log(token);
               if (user !== 'admin') {
                 // go chain
                 this.requestHandler.handleRequest(request);
               } else {
+                window.localStorage.setItem('adminToken', token);
                 await delay(3000);
                 console.log('success logged as admin');
                 this.loadingComponent.style.display = 'none'; //loading on
                 this.errorMessageComponent.style.display = 'none';
                 this.locationObject.replace(
-                  'http://127.0.0.1:5500/client/admin/admin.html'
+                  `${serverConfig.serverUrl}${serverConfig.port}/client/admin/admin.html`
                 );
                 resolve('success logged as admin');
               }
@@ -102,12 +105,13 @@ class InstructorRequestHandler extends RequestHandler {
                 // go chain
                 this.requestHandler.handleRequest(request);
               } else {
+                window.localStorage.setItem('instructorToken', token);
                 await delay(3000);
                 console.log('success logged as instructor');
                 this.loadingComponent.style.display = 'none'; //loading on
                 this.errorMessageComponent.style.display = 'none';
                 this.locationObject.replace(
-                  'http://127.0.0.1:5500/client/instructor/instructor.html'
+                  `${serverConfig.serverUrl}${serverConfig.port}/client/instructor/instructor.html`
                 );
                 resolve('success logged as instructor');
               }
@@ -169,12 +173,13 @@ class StudentRequestHandler extends RequestHandler {
                 // go chain
                 //do nothing
               } else {
+                window.localStorage.setItem('studentToken', token);
                 await delay(3000);
                 console.log('success logged as student');
                 this.loadingComponent.style.display = 'none'; //loading on
                 this.errorMessageComponent.style.display = 'none';
                 this.locationObject.replace(
-                  'http://127.0.0.1:5500/client/student/admin.html'
+                  `${serverConfig.serverUrl}${serverConfig.port}/client/student/admin.html`
                 );
                 resolve('success logged as student');
               }
