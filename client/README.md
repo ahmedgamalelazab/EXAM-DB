@@ -8,3 +8,6 @@
 * backend api to get random exam and upload the student result on the backend 
 ### still out of the frame:
 * we need backend apis for all the reports required 
+#### Application states : 
+* handling on add instructor event not yet soon  
+* handling events or app states not yet soon
