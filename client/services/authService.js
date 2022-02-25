@@ -179,7 +179,7 @@ class StudentRequestHandler extends RequestHandler {
                 this.loadingComponent.style.display = 'none'; //loading on
                 this.errorMessageComponent.style.display = 'none';
                 this.locationObject.replace(
-                  `${serverConfig.serverUrl}${serverConfig.port}/client/student/admin.html`
+                  `${serverConfig.serverUrl}${serverConfig.port}/client/student/student.html`
                 );
                 resolve('success logged as student');
               }

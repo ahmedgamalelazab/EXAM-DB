@@ -90,3 +90,65 @@ module.exports.getAllStudentsController = async (req, res, next) => {
     });
   }
 };
+
+/**
+ *
+ * @param {request} req
+ * @param {response} res
+ */
+module.exports.getLoggedStudentController = async function (req, res, next) {
+  // {
+  //   "id": "FBCCE403-3A42-4392-AA67-02E89E26A91B",
+  //   "first_name": "kareem",
+  //   "last_name": "ali",
+  //   "email": "realStudent@gmail.com",
+  //   "password": "12345678",
+  //   "student_id": "8481F5CF-8F9C-47DA-BC75-3867F53A55F6",
+  //   "student_phone_number": "99009900",
+  //   "student_department": "Mean Stack",
+  //   "iat": 1645808612
+  // }
+
+  if (req.payload.userType === 'student') {
+    const { userLoad } = req.payload;
+
+    const result = await knexQueryBuilderHelper(
+      tableNames.studentExamMarks
+    ).where({
+      student_id: userLoad.student_id,
+    });
+
+    userLoad.totalExamsSolvedByStudent = result.length;
+
+    res.status(200).json({
+      userLoad,
+    });
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+};
+
+module.exports.getStudentSolvedExamsController = async (req, res, next) => {
+  if (req.payload.userType === 'student') {
+    const { userLoad } = req.payload;
+
+    const result = await knexQueryBuilderHelper(
+      tableNames.studentExamMarks
+    ).where({
+      student_id: userLoad.student_id,
+    });
+
+    res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+};

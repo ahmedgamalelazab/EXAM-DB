@@ -10,7 +10,12 @@
   font-weight: bold;
 }
 
-.container .header-container {
+
+.header-container{
+  justify-content: center !important;
+}
+
+.container .header-container {  
   padding-bottom: 60px;
   width: 50%;
 }
@@ -37,7 +42,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: antiquewhite;
+  background-color: white;
   margin: 10px;
   padding: 15px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

@@ -72,20 +72,22 @@ exports.up = async function (knex) {
   // reem2
   await knex.schema.createTable(tableNames.questions, function (table) {
     table.increments('id').primary().notNullable(),
-      table.string('name', 50).notNullable();
+      table.string('name', 100).notNullable();
     table
-      .string('question_type_id', 50)
+      .string('question_type', 50)
       .notNullable()
       .checkIn(['MCQ', 'TRUEorFALSE']);
-    table.string('correct_answer', 20).notNullable();
+    table.integer('question_point').notNullable();
+    table.string('correct_answer', 100).notNullable();
+    table.boolean('genByInstructor').defaultTo(false);
   });
 
   await knex.schema.createTable(tableNames.answers, function (table) {
     table.increments('id').primary().notNullable();
-    table.string('answer_one', 20).notNullable();
-    table.string('answer_two', 20).notNullable();
-    table.string('answer_three', 20).notNullable();
-    table.string('answer_four', 20).notNullable();
+    table.string('answer_one', 50).notNullable();
+    table.string('answer_two', 50).notNullable();
+    table.string('answer_three', 50).notNullable();
+    table.string('answer_four', 50).notNullable();
     //* step one
     table.integer('question_id').notNullable();
     //* step two
@@ -100,11 +102,14 @@ exports.up = async function (knex) {
   //yasser
   await knex.schema.createTable(tableNames.exam, function (table) {
     table.increments('id').primary().notNullable();
-    table.string('exam_name', 30).notNullable();
-    table.bigInteger('duration').notNullable();
-    table.integer('total_marks').notNullable();
+    table.string('exam_name', 50);
+    table
+      .string('exam_type', 50)
+      .checkIn(['instructor_exam', 'practical_exam']);
+    table.bigInteger('duration');
+    table.integer('total_marks');
     //* step one
-    table.uuid('instructor_id').notNullable();
+    table.uuid('instructor_id');
     //* step two
     table
       .foreign('instructor_id')
@@ -223,6 +228,27 @@ exports.up = async function (knex) {
       // .onDelete('CASCADE');
     }
   );
+
+  await knex.schema.createTable(
+    tableNames.studentExamMarks,
+    async function (table) {
+      table.increments('id').primary().notNullable();
+      table.integer('totalMarks').notNullable();
+      table.integer('exam_id').notNullable();
+      table.uuid('student_id').notNullable();
+
+      table.foreign('student_id').references('id').inTable(tableNames.student);
+      // .onUpdate('CASCADE')
+      // .onDelete('CASCADE');
+
+      table
+        .foreign('exam_id')
+        .references('id')
+        .inTable(tableNames.exam)
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
+    }
+  );
 };
 
 /**
@@ -234,6 +260,7 @@ exports.down = async function (knex) {
   await knex.schema.dropTableIfExists(tableNames.instructor_department);
   await knex.schema.dropTableIfExists(tableNames.course_dept);
   await knex.schema.dropTableIfExists(tableNames.student_exam_question);
+  await knex.schema.dropTableIfExists(tableNames.studentExamMarks);
   await knex.schema.dropTableIfExists(tableNames.student);
   await knex.schema.dropTableIfExists(tableNames.exam);
   await knex.schema.dropTableIfExists(tableNames.answers);

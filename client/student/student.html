@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../assets/css/Sidebar-Menu-1.css" />
     <link rel="stylesheet" href="../assets/css/Sidebar-Menu.css" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/quiz.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
@@ -50,42 +51,26 @@
     
 
     <div class="row parent">
-      <div id="wrapper" class="col-md-4 col-sm-1">
+      <div id="wrapper" class="col-md-2 col-sm-1">
         <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li>
-              <a href="admin.html"
+              <a href="student.html"
                 ><span><i class="fa-solid fa-gauge-high"></i></span>Dashboard</a
               >
             </li>
             <li>
-              <a href="addInstructor.html"
-                ><span><i class="fa-solid fa-add"></i></span>Add
-                Instructor</a
+              <a href="../exam/practicalExam.html"
+                ><span><i class="fa-solid fa-book"></i></span>Practical Exam</a
               >
             </li>
+
             <li>
-              <a href="getAllInstructor.html"
-                ><span><i class="fa-solid fa-user-pen"></i></span>Instructor</a
+              <a href="practicalExam.html"
+                ><span><i class="fa-solid fa-book"></i></span>instructor Exams</a
               >
             </li>
-            <li>
-              <a href="getAllStudent.html">
-                <span><i class="fa-solid fa-users"></i></span>Students</a
-              >
-            </li>
-            <li>
-              <a href="getDepartment.html"
-                ><span><i class="fa-solid fa-house"></i></span
-                >Departments</a
-              >
-            </li>
-            <li>
-              <a href="getAllCourses.html"
-                ><span><i class="fa-solid fa-book-bible"></i></span
-                >Courses</a
-              >
-            </li>
+           
             <li>
               <a href="../auth/appLoginScreen.html"
                 ><span><i class="fa-solid fa-sign-out"></i></span
@@ -95,60 +80,43 @@
           </ul>
         </div>
       </div>
-      <div class="child2 col-md-8 col-sm-11">
-        <h1>Reports</h1>
+      <!-- {
+        "id": "FBCCE403-3A42-4392-AA67-02E89E26A91B",
+        "first_name": "kareem",
+        "last_name": "ali",
+        "email": "realStudent@gmail.com",
+        "password": "12345678",
+        "student_id": "8481F5CF-8F9C-47DA-BC75-3867F53A55F6",
+        "student_phone_number": "99009900",
+        "student_department": "Mean Stack",
+        "iat": 1645808612
+      } -->
 
-        <div class="report row">
-          <h4 class="col-sm-8">student report acc dept</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn1"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
-        </div>
-
-        <div class="report row">
-          <h4 class="col-sm-8">topic report</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn2"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
-        </div>
-
-        <div class="report row">
-          <h4 class="col-sm-8">exam student report</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn3"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
-        </div>
-
-        <div class="report row">
-          <h4 class="col-sm-8">exame Qus report</h4>
-          <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
-          <button
-            id="btn4"
-            type="button"
-            class="btn btn-success cust-btn col-sm-2"
-          >
-            Report
-          </button>
+      <!-- ^body -->
+      <div class="child2 col-md-8 col-sm-11 mt-3">
+        <div class="row">
+          <div class="col-sm-6">
+            <div id ="cardBuilderMain" class="card">
+              <!-- <div class="card-body main-card-view">
+                <h5 class="card-title">first_name last_name</h5>
+                <p class="card-text">user id : id</p>
+                <p class="card-text">your id : student_id</p>
+                <p class="card-text">email : email</p>
+                <p class="card-text">phone Number : student_phone_number</p>
+                <p class="card-text">department : student_department</p>
+                <p class="card-text">Total Exams : 10 </p>               
+                <p class="card-text">Exam Type : Practical exam </p>               
+                <a href="#" class="btn btn-primary">Check Now !</a>
+              </div> -->
+            </div>
+          </div>          
         </div>
       </div>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/all.min.js"></script>
     <script src="../js/Sidebar-Menu.js"></script>
+    <script type="module" src="../js/student/studentDashBoard.js"></script>
+
   </body>
 </html>

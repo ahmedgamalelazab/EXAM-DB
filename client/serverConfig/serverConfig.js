@@ -1,5 +1,5 @@
 const serverConfig = {
-  port: 5501,
+  port: 5503,
   serverUrl: 'http://127.0.0.1:',
   backendServer: 'http://localhost:5555',
 };

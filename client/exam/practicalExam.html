@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ExamSys</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/Google-Style-Login.css">
+    <link rel="stylesheet" href="../assets/css/quiz.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body class="text-start main" style="background: var(--bs-gray-300);"><form name="Exam" class="exam">
+
+
+  <div class="header-container">
+    <!-- Exam Header -->
+    <div class="page-header">
+      <h1 id="exam-header">Practical Exam</h1>      
+    </div>
+    <!-- Timer  -->
+    <input type="hidden" id="set-time" value="1" />
+    <!-- <div id="countdown">
+
+      <div id='tiles' class="color-full"></div>
+      <div class="countdown-label">Time Remaining</div>
+    </div> -->
+  </div>
+  <div class="wrapper container">
+    
+    <!--^ main view -->
+    <div id="questionListContainer" class="container questionsContainer">
+      <!-- <div class="quiz-box quiz-1">
+        <h2 class="quiz-question">1. What is your eye colour?</h2>
+        <span class="quiz-answer">
+          <label><input type="radio" name="q1"> Light blue</label>
+          <label><input type="radio" name="q1"> Blue, Grey or Green</label>
+          <label><input type="radio" name="q1"> Dark</label>
+          <label><input type="radio" name="q1"> Brown</label>
+        </span>
+      </div> -->
+    </div>
+    
+    <!--^end of the main view -->
+    <br>
+    <div class="submit">
+      <input id ="submitted-exam" class="btn btn-primary" type="submit" name="result" value="Submit">
+    </div>
+    
+  </div><!-- /.container -->
+</form>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="../js/timer.js"></script> -->
+    <script type="module" src="../js/student/practicalExam.js"></script>
+</body>
+
+</html>

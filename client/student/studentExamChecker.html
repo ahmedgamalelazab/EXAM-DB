@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>student</title>
+    <title>Course</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
@@ -43,63 +43,53 @@
       language="javascript"
       src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"
     ></script>
-    <script type="module" src="../js/admin/adminGetAllStudents.js"></script>
+    <script type="module" src="../js/student/studentGelAllSolvedExams.js"></script>
   </head>
 
   <body>
     
-      <nav
-        class="navbar navbar-dark navbar-expand-md sticky-top navigation-clean-button"
-        style="height: 80px; background-color: #37434d; color: #ffffff"
+    <nav
+    class="navbar navbar-dark navbar-expand-md sticky-top navigation-clean-button"
+    style="height: 80px; background-color: #37434d; color: #ffffff"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"
+        ><button id="custum-button" data-bs-toggle="" data-bs-target="">
+          <span class="visually-hidden">Toggle navigation</span
+          ><span class="navbar-toggler-icon">
+
+          </span></button
+        ><i class="fa fa-globe"></i>DB-EXAM PLATFORM</a
       >
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"
-            ><button id="custum-button" data-bs-toggle="" data-bs-target="">
-              <span class="visually-hidden">Toggle navigation</span
-              ><span class="navbar-toggler-icon"></span></button
-            ><i class="fa fa-globe"></i>DB-EXAM PLATFORM</a
-          >
-        </div>
-      </nav>
+    </div>
+  </nav>
     
 
     <div class="row parent">
-      <div id="wrapper" class="col-md-3 col-sm-1">
+      <div id="wrapper" class="col-md-2 col-sm-1">
         <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li>
-              <a href="admin.html"
+              <a href="student.html"
                 ><span><i class="fa-solid fa-gauge-high"></i></span>Dashboard</a
               >
             </li>
             <li>
-              <a href="addInstructor.html"
-                ><span><i class="fa-solid fa-add"></i></span>Add Instructor</a
+              <a href="../exam/practicalExam.html"
+                ><span><i class="fa-solid fa-book"></i></span>Practical Exam</a
               >
             </li>
+
             <li>
-              <a href="getAllInstructor.html"
-                ><span><i class="fa-solid fa-user-pen"></i></span>Instructor</a
+              <a href="practicalExam.html"
+                ><span><i class="fa-solid fa-book"></i></span>instructor Exams</a
               >
             </li>
-            <li>
-              <a href="getAllStudent.html">
-                <span><i class="fa-solid fa-users"></i></span>Students</a
-              >
-            </li>
-            <li>
-              <a href="getDepartment.html"
-                ><span><i class="fa-solid fa-house"></i></span>Departments</a
-              >
-            </li>
-            <li>
-              <a href="getAllCourses.html"
-                ><span><i class="fa-solid fa-book-bible"></i></span>Courses</a
-              >
-            </li>
+           
             <li>
               <a href="../auth/appLoginScreen.html"
-                ><span><i class="fa-solid fa-sign-out"></i></span>Log out</a
+                ><span><i class="fa-solid fa-sign-out"></i></span
+                >Log out</a
               >
             </li>
           </ul>
@@ -109,10 +99,10 @@
         <table id="example" class="display" style="width: 100%">
           <thead>
             <tr>
-              <th>userId</th>
-              <th>first name</th>
-              <th>last name</th>
-              <th>email address</th>
+              <th>id</th>
+              <th>total marks</th>
+              <th>exam id</th>
+              <th>student id</th>
             </tr>
           </thead>
         </table>

@@ -12,4 +12,5 @@ module.exports = {
   questions: 'questions',
   student_exam_question: 'student_exam_question',
   answers: 'answers',
+  studentExamMarks: 'studentExamMarks',
 };

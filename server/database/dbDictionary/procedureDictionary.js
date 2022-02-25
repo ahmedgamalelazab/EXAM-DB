@@ -21,6 +21,7 @@ module.exports.DBProcedureDictionary = {
   insertQuestion: 'insertQuestion',
   updateQuestionById: 'updateQuestionById',
   deleteQuestionById: 'deleteQuestionById',
+  generateExamQuestions: 'generateExamQuestions',
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
   //Yasser
@@ -44,17 +45,17 @@ module.exports.DBProcedureDictionary = {
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
   //Reem/
-  selectAllCourses: "selectAllCourses",
+  selectAllCourses: 'selectAllCourses',
   insertCourse: 'insertCourse',
   updateCourseByID: 'updateCourseByID',
   deleteCourseByID: 'deleteCourseByID',
   //////////////////////////////////////////////////////////////////////
-  selectAllTopics: "selectAllTopics",
+  selectAllTopics: 'selectAllTopics',
   insertTopic: 'insertTopic',
   updateTopicByID: 'updateTopicByID',
   deleteTopicByID: 'deleteTopicByID',
   ////////////////////////////////////////
-  selectAllCoursesDept: "selectAllCoursesDept",
+  selectAllCoursesDept: 'selectAllCoursesDept',
   insertCourseDept: 'insertCourseDept',
   updateCourseDeptByID: 'updateCourseDeptByID',
   deleteCourseDeptByID: 'deleteCourseDeptByID',
