@@ -4,6 +4,7 @@ const {
   insertStudentController,
   getLoggedStudentController,
   getStudentSolvedExamsController,
+  getStudentPracticalExamAnswerReportSheetController,
 } = require('../controller/Student.controller.js');
 const { authMiddleWere } = require('../middleware/auth.js');
 
@@ -22,6 +23,11 @@ Router.route('/ExamApp/api/v1/Student/profile').get(
 Router.route('/ExamApp/api/v1/Student/solvedExams').get(
   authMiddleWere,
   getStudentSolvedExamsController
+);
+
+Router.route('/ExamApp/api/v1/Student/solvedExams/particularExam').get(
+  authMiddleWere,
+  getStudentPracticalExamAnswerReportSheetController
 );
 
 //who can insert a student .. ? only the instructor who can do that !

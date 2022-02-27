@@ -1,6 +1,7 @@
 const {
   insertStudentRecord,
   getAllStudentsUserRecords,
+  getStudentExamReportPractical,
 } = require('../quries/Student.js');
 const { request, response } = require('express');
 const { development } = require('../knexfile.js');
@@ -145,6 +146,55 @@ module.exports.getStudentSolvedExamsController = async (req, res, next) => {
       success: true,
       data: result,
     });
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+};
+
+/**
+ *
+ * @param {request} req
+ * @param {response} res
+ */
+module.exports.getStudentPracticalExamAnswerReportSheetController = async (
+  req,
+  res,
+  next
+) => {
+  //no one is allowed to ask for this query except only the student and the instructor
+  if (
+    req.payload.userType === 'student' ||
+    req.payload.userType === 'instructor'
+  ) {
+    //if the user is student or instructor
+
+    const student_id = req.query.student_id;
+    const exam_id = req.query.exam_id;
+    console.log(req.query);
+    //check for the params
+    if (student_id && exam_id) {
+      try {
+        const result = await getStudentExamReportPractical(exam_id, student_id);
+        //if there's no errors
+        res.status(200).json({
+          success: true,
+          data: result,
+        });
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          message: 'server cannot resolve the exam answers request',
+        });
+      }
+    } else {
+      res.status(500).json({
+        success: false,
+        message: 'server cannot resolve the request params',
+      });
+    }
   } else {
     res.status(403).json({
       success: false,

@@ -6,7 +6,8 @@ $(document).ready(function () {
   });
   var baseurl = `${serverConfig.backendServer}/ExamApp/api/v1/Student/solvedExams`;
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open('GET', baseurl, true);
+
+  xmlhttp.open('GET', baseurl, false);
   xmlhttp.setRequestHeader(
     'x-auth-token',
     window.localStorage.getItem('studentToken')
@@ -22,6 +23,24 @@ $(document).ready(function () {
           { data: 'exam_id' },
           { data: 'student_id' },
         ],
+      });
+      //after sending
+
+      let table = $('#example').DataTable();
+      console.log(table);
+      $('#example').on('click', 'tr', function () {
+        var student_id = table.row(this).data().student_id;
+        var exam_id = table.row(this).data().exam_id;
+        console.log(student_id);
+        console.log(exam_id);
+        window.localStorage.setItem(
+          'student_exam_data',
+          JSON.stringify({
+            student_id: student_id,
+            exam_id: exam_id,
+          })
+        );
+        window.location.href = `${serverConfig.serverUrl}${serverConfig.port}/client/exam/studentPracticalExamReport.html`;
       });
     }
   };

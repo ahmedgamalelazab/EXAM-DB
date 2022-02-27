@@ -166,3 +166,41 @@ module.exports.getAllStudentProc = async function () {
 };
 
 //delete and update will be created after the children tables get finished first
+
+module.exports.studentPracticalExamsSolvedReportAskProc = async function () {
+  return new Promise(async (resolve, reject) => {
+    //check for the connection
+    if (MSSQLConnection.pool.connected) {
+      //try to do a query to resolve the student request
+      try {
+        await MSSQLConnection.pool.request().query(`
+
+              CREATE OR ALTER PROC ${DBProcedureDictionary.studentAskForExamReportPractical}
+              (
+                  @student_id as varchar(max),
+                  @exam_id as int
+              )
+              AS 
+              BEGIN                                  
+                  SELECT 
+                  ${tableNames.questions}.id as "questionId",
+                  ${tableNames.questions}.name as "questionName",
+                  ${tableNames.student_exam_question}.answer as "studentAnswer",
+                  ${tableNames.questions}.correct_answer
+                  FROM ${tableNames.student_exam_question},${tableNames.questions} WHERE 
+                  ${tableNames.student_exam_question}.question_id = ${tableNames.questions}.id
+                  AND ${tableNames.student_exam_question}.student_id = @student_id
+                  AND ${tableNames.student_exam_question}.exam_id = @exam_id
+                  ORDER BY ${tableNames.questions}.id ASC;
+              END
+          
+          `);
+        resolve(`proc create well`);
+      } catch (error) {
+        reject(error);
+      }
+    } else {
+      reject(new Error(`you should open connection before create the proc`));
+    }
+  });
+};

@@ -41,6 +41,7 @@ module.exports.DBProcedureDictionary = {
   insertStudentExamQuestion: 'insertStudentExamQuestion',
   updateStudentExamQuestionById: 'updateStudentExamQuestionById',
   deleteStudentExamQuestionById: 'deleteStudentExamQuestionById',
+  studentAskForExamReportPractical: 'studentAskForExamReportPractical',
 
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////

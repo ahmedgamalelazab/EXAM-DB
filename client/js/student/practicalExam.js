@@ -21,7 +21,7 @@ import { ExamService } from '../../services/examService.js';
    */
 
   //array of user solution we
-  const studentAnswerSheet = [];
+  let studentAnswerSheet = [];
 
   //hooking
 
@@ -51,6 +51,15 @@ import { ExamService } from '../../services/examService.js';
       console.log(e.target.name);
       //check if the user solved the question already
       if (e.target.value && e.target.name) {
+        // simple
+        //if the id is exist before then write the new value or it
+
+        //?remove if the same id entered
+        studentAnswerSheet = studentAnswerSheet.filter(studentAnswer => {
+          return studentAnswer.id != e.target.name;
+        });
+
+        //?then push it again
         studentAnswerSheet.push({
           id: e.target.name,
           student_answer: e.target.value,

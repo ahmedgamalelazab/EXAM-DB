@@ -10,6 +10,7 @@ const {
 const {
   createInsertStudentUserProc,
   getAllStudentProc,
+  studentPracticalExamsSolvedReportAskProc,
 } = require('../procedures/User.student.js');
 
 /**
@@ -143,6 +144,41 @@ module.exports.getAllStudentsUserRecords = async function () {
     } else {
       //db not connected then throw error
       throw `db not connected .. function : getAllStudentsRecord`;
+    }
+  });
+};
+
+//TODO check for the inputs
+module.exports.getStudentExamReportPractical = async function (
+  exam_id,
+  student_id
+) {
+  return new Promise(async (resolve, reject) => {
+    if (MSSQLConnection.pool.connected) {
+      try {
+        //build the proc
+        await studentPracticalExamsSolvedReportAskProc();
+        //if no errors
+        await MSSQLConnection.pool
+          .request()
+          .input('student_id', student_id)
+          .input('exam_id', exam_id)
+          .execute(
+            DBProcedureDictionary.studentAskForExamReportPractical,
+            (error, recordSets, returnValue) => {
+              if (error) {
+                reject(error);
+                return;
+              }
+              //else if no errors
+              resolve(recordSets.recordset);
+            }
+          );
+      } catch (error) {
+        reject(error);
+      }
+    } else {
+      reject(new Error(`u must be connected to inject the query`));
     }
   });
 };
