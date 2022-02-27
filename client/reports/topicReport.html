@@ -29,6 +29,26 @@
         });
       });
     </script>
+        
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+  />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script
+    type="text/javascript"
+    language="javascript"
+    src="https://code.jquery.com/jquery-3.3.1.js"
+  ></script>
+  <script
+    type="text/javascript"
+    language="javascript"
+    src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"
+  ></script>
+
+
+
   </head>
 
   <body>    
@@ -54,34 +74,34 @@
         <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li>
-              <a href="admin.html"
+              <a href="../admin/admin.html"
                 ><span><i class="fa-solid fa-gauge-high"></i></span>Dashboard</a
               >
             </li>
             <li>
-              <a href="addInstructor.html"
+              <a href="../admin/addInstructor.html"
                 ><span><i class="fa-solid fa-add"></i></span>Add
                 Instructor</a
               >
             </li>
             <li>
-              <a href="getAllInstructor.html"
+              <a href="../admin/getAllInstructor.html"
                 ><span><i class="fa-solid fa-user-pen"></i></span>Instructor</a
               >
             </li>
             <li>
-              <a href="getAllStudent.html">
+              <a href="../admin/getAllStudent.html">
                 <span><i class="fa-solid fa-users"></i></span>Students</a
               >
             </li>
             <li>
-              <a href="getDepartment.html"
+              <a href="../admin/getDepartment.html"
                 ><span><i class="fa-solid fa-house"></i></span
                 >Departments</a
               >
             </li>
             <li>
-              <a href="getAllCourses.html"
+              <a href="../admin/getAllCourses.html"
                 ><span><i class="fa-solid fa-book-bible"></i></span
                 >Courses</a
               >
@@ -96,26 +116,39 @@
         </div>
       </div>
       <div class="child2 col-md-8 col-sm-11">
-        <h1>Reports</h1>
+        <h1>Topic Id</h1>
         <div class="report row">
-          <h4 class="col-sm-8">topic report</h4>
+          <input id="input-topic-id" type="text" class="col-sm-8" style="margin-right: 10px;">
           <!-- <i  class="fa-solid fa-file-arrow-down" style="margin-left: 100px;"></i> -->
           <button
-            id="btn2"
+            id="generateTopicCourseReportCrystal"
             type="button"
             class="btn btn-success cust-btn col-sm-2"
           >
-          <li style="list-style: none;">
-            <a style="color:white; text-decoration: none;" href="../reports/topicReport.html">
-              Report</a            
-            >
-          </li>
+            Report
           </button>
-        </div>      
+        </div>
+        <div class="report row">
+            <div class="tabel-stu-data col-md-8 col-sm-11">
+                <table id="example" class="display" style="width: 100%">
+                  <thead>
+                    <tr>
+                      <th>course_id</th>
+                      <th>courseName</th>
+                      <th>course_total_hrs</th>
+                      <th>topic_name</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+          </div>
+       
       </div>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/all.min.js"></script>
     <script src="../js/Sidebar-Menu.js"></script>
+    <script type="module" src="../js/reports/generateTopicCourseReport.js"></script>
+
   </body>
 </html>

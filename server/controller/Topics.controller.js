@@ -3,7 +3,10 @@ const {
   insertTopicsRecord,
   updateTopic,
   deleteTopic,
+  generateTopicReportById,
 } = require('../quries/Topics');
+
+const { request, response } = require('express');
 
 module.exports.getAllTopics = async (req, res, next) => {
   if (req.payload.userType === 'admin') {
@@ -126,5 +129,36 @@ module.exports.deleteTopicController = async (req, res, next) => {
       message: 'forbidden',
     });
     return;
+  }
+};
+
+/**
+ *
+ * @param {request} req
+ * @param {response} res
+ */
+module.exports.generateTopicCoursesController = async (req, res, next) => {
+  //only the admin is allowed to generate this report
+  if (req.payload.userType === 'admin') {
+    const topic_id = req.query.topic_id;
+    try {
+      const result = await generateTopicReportById(topic_id);
+      //if no error
+      res.status(200).json({
+        success: true,
+        data: result,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        success: false,
+        message: 'error while fetching ur topic course topics',
+      });
+    }
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
   }
 };

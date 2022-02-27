@@ -56,6 +56,7 @@ module.exports.DBProcedureDictionary = {
   insertTopic: 'insertTopic',
   updateTopicByID: 'updateTopicByID',
   deleteTopicByID: 'deleteTopicByID',
+  generateTopicReportProc: 'generateTopicReportProc',
   ////////////////////////////////////////
   selectAllCoursesDept: 'selectAllCoursesDept',
   insertCourseDept: 'insertCourseDept',

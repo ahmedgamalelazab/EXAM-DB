@@ -4,6 +4,7 @@ const {
   insertTopicsController,
   updateTopicRecordController,
   deleteTopicController,
+  generateTopicCoursesController,
 } = require('../controller/Topics.controller');
 
 const { authMiddleWere } = require('../middleware/auth.js');
@@ -18,6 +19,11 @@ Router.route('/ExamApp/api/v1/Topics').post(
 Router.route('/ExamApp/api/v1/Topics').put(
   authMiddleWere,
   updateTopicRecordController
+);
+
+Router.route('/ExamApp/api/v1/Topics/courses').get(
+  authMiddleWere,
+  generateTopicCoursesController
 );
 
 Router.route('/ExamApp/api/v1/Topics/:id').delete(

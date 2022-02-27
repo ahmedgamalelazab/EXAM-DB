@@ -21,6 +21,7 @@ $(document).ready(function () {
           { data: 'userFirstName' },
           { data: 'userLastName' },
           { data: 'userEmail' },
+          { data: 'department' },
         ],
       });
     }
