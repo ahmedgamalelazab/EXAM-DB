@@ -10,6 +10,7 @@ const {
   createInsertInstructorUserProc,
   getAllInstructorsProc,
   deleteInstructorProc,
+  getInstructorStudentsProc,
 } = require('../procedures/User.instructor.js');
 
 /**
@@ -176,6 +177,47 @@ module.exports.deleteInstructorRecord = async function (email, ins_id) {
       console.log(ins_id);
     } catch (error) {
       reject(error);
+    }
+  });
+};
+
+//TODO param check for this too
+/**
+ *@description this function create a proc and then use it to get a instructor students using his id to get it
+ * @param {string} ins_id
+ * @returns {sql.IResult<any>recordset}
+ */
+module.exports.getInstructorStudents = async function (ins_id) {
+  return new Promise(async (resolve, reject) => {
+    if (MSSQLConnection.pool.connected) {
+      //if connected then we need to go on and make the request
+      try {
+        await getInstructorStudentsProc(); // proc first
+
+        //if the proc created ok ! ?
+        //then we need to call this proc and give it the ins_id then move the response up to the api layer
+        MSSQLConnection.pool
+          .request()
+          .input('ins_id', ins_id)
+          .execute(
+            DBProcedureDictionary.getInstructorStudentProc,
+            (error, recordSets, returnValue) => {
+              if (error) {
+                reject(error);
+                return;
+              }
+              //if all are ok
+              resolve(recordSets.recordset);
+            }
+          );
+      } catch (error) {
+        console.log(error);
+        reject(error);
+      }
+    } else {
+      reject(
+        new Error(`u must be connected to the db before making this query`)
+      );
     }
   });
 };

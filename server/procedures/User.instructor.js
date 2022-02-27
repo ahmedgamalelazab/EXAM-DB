@@ -208,3 +208,47 @@ module.exports.deleteInstructorProc = async function () {
     }
   });
 };
+
+module.exports.getInstructorStudentsProc = async function () {
+  return new Promise(async (resolve, reject) => {
+    //check for the internet connection
+    if (MSSQLConnection.pool.connected) {
+      //if connected ?
+      //then create the query proc
+      try {
+        await MSSQLConnection.pool.request().query(`
+            CREATE OR ALTER PROC ${DBProcedureDictionary.getInstructorStudentProc}
+            (
+              @ins_id as varchar(max)
+            )
+            AS
+            BEGIN
+                SELECT 
+                ${tableNames.student}.id as "student_id",
+                ${tableNames.mainUser}.first_name as "student_first_name",
+                ${tableNames.mainUser}.last_name as "student_last_name",
+                ${tableNames.mainUser}.email as "student_email",
+                ${tableNames.mainUser}.password
+                FROM ${tableNames.student} , ${tableNames.instructor_student} , ${tableNames.instructor} , ${tableNames.mainUser}
+                WHERE ${tableNames.student}.id = ${tableNames.instructor_student}.student_id
+                AND ${tableNames.instructor}.id = ${tableNames.instructor_student}.instructor_id
+                AND ${tableNames.student}.user_id = ${tableNames.mainUser}.id   
+                AND ${tableNames.instructor}.id = @ins_id
+            END
+        `);
+
+        //if all are ok
+        resolve(`proc created`);
+      } catch (err) {
+        console.log(err);
+        reject(err);
+      }
+    } else {
+      reject(
+        new Error(
+          `u must connect to the data base before creating or altering the proc`
+        )
+      );
+    }
+  });
+};

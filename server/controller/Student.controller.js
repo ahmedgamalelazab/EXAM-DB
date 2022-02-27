@@ -18,6 +18,8 @@ module.exports.insertStudentController = async (req, res, next) => {
     const { first_name, last_name, email, password, phone_number, ins_id } =
       req.body;
 
+    const { userLoad } = req.payload;
+
     //TODO check for the incoming request params
 
     try {
@@ -34,13 +36,27 @@ module.exports.insertStudentController = async (req, res, next) => {
         });
         return;
       }
+
+      /*
+      {
+        "id": "4BDD3566-BFBA-4950-82C6-47958FF9BE43",
+        "first_name": "ahmed",
+        "last_name": "gamal",
+        "email": "jimmy@gmail.com",
+        "password": "123456789",
+        "ins_id": "2E64FD29-6A50-484E-B4B9-2B8CE530366F",
+        "ins_phone_number": "01032122442",
+        "ins_department": "Backend Development",
+        "iat": 1645929148
+      }
+      */
       const result = await insertStudentRecord(
         first_name,
         last_name,
         email,
         password,
         phone_number,
-        ins_id
+        userLoad.ins_id
       );
       //if all are ok !
       res.status(201).json({

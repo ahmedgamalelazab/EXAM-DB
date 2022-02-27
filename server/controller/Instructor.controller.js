@@ -2,6 +2,7 @@ const {
   insertInstructorRecord,
   getAllInstructorsUserRecords,
   deleteInstructorRecord,
+  getInstructorStudents,
 } = require('../quries/Instructor.js');
 const { request, response } = require('express');
 const { development } = require('../knexfile.js');
@@ -112,6 +113,42 @@ module.exports.deleteInstructorController = async (req, res, next) => {
     res.status(500).json({
       success: false,
       error: err,
+    });
+  }
+};
+
+/**
+ *
+ * @param {request} req
+ * @param {response} res
+ *
+ */
+module.exports.getInstructorStudentsController = async (req, res, next) => {
+  //only the instructor is allowed to this
+  if (req.payload.userType === 'instructor') {
+    //if the user is instructor
+    //then we will allow him to call this request
+    try {
+      const { userLoad } = req.payload;
+      console.log(userLoad.ins_id);
+      const result = await getInstructorStudents(userLoad.ins_id);
+      //if all are ok
+      res.status(200).json({
+        success: true,
+        data: result,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        success: false,
+        message: err,
+      });
+    }
+  } else {
+    console.log(err);
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
     });
   }
 };

@@ -10,6 +10,7 @@ module.exports.DBProcedureDictionary = {
   insertInstructorUser: 'insertInstructorUser',
   getAllInstructorsProc: 'getAllInstructorsProc',
   deleteInstructorDictionaryProc: 'deleteInstructorDictionaryProc',
+  getInstructorStudentProc: 'getInstructorStudentProc',
   ////////////////////////////////////////////////////////////////////
   ///////////////////////////student/////////////////////////////////////////
   //ahmed gamal

@@ -6,11 +6,17 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>student</title>
+    <title>admin</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/Font%20Awesome%205%20Brands.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/css/Font%20Awesome%205%20Brands.css"
+    />
     <link rel="stylesheet" href="../assets/css/Font%20Awesome%205%20Free.css" />
-    <link rel="stylesheet" href="../assets/css/Font%20Awesome%206%20Brands.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/css/Font%20Awesome%206%20Brands.css"
+    />
     <link rel="stylesheet" href="../assets/css/Font%20Awesome%206%20Free.css" />
     <link rel="stylesheet" href="../assets/css/FontAwesome.css" />
     <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css" />
@@ -24,17 +30,17 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#custum-button").on("click", function () {
-          $("#sidebar-wrapper").toggle();
+        $('#custum-button').on('click', function () {
+          $('#sidebar-wrapper').toggle();
         });
       });
     </script>
   </head>
 
   <body>
-    <div>
+    
       <nav
-        class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button"
+        class="navbar navbar-dark navbar-expand-md sticky-top navigation-clean-button"
         style="height: 80px; background-color: #37434d; color: #ffffff"
       >
         <div class="container-fluid">
@@ -42,37 +48,13 @@
             ><button id="custum-button" data-bs-toggle="" data-bs-target="">
               <span class="visually-hidden">Toggle navigation</span
               ><span class="navbar-toggler-icon"></span></button
-            ><i class="fa fa-globe"></i> Antariksh</a
-          ><button
-            class="navbar-toggler"
-            data-bs-toggle="collapse"
-            data-bs-target="#navcol-1"
+            ><i class="fa fa-globe"></i>DB-EXAM PLATFORM</a
           >
-            <span class="visually-hidden">Toggle navigation</span
-            ><span class="navbar-toggler-icon"></span>
-          </button>
-          <div id="navcol-1" class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"></li>
-              <li class="nav-item"></li>
-              <li class="nav-item"></li>
-              <li class="nav-item">
-                <a class="nav-link active" style="color: #ffffff" href="#"
-                  ><i class="fa fa-user-circle-o"></i> Portfolio</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" style="color: #ffffff" href="#"
-                  ><i class="fa fa-sign-in"></i> Sign In</a
-                >
-              </li>
-            </ul>
-          </div>
         </div>
       </nav>
-    </div>
+    
 
-    <div class="row parent" >
+    <div class="row parent">
       <div id="wrapper" class="col-md-3 col-sm-1">
         <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
@@ -83,56 +65,125 @@
             </li>
             <li>
               <a href="addStudent.html"
-                ><span><i class="fa-solid fa-user-pen"></i></span>AddStudent</a
+                ><span><i class="fa-solid fa-add"></i></span>Add Student</a
               >
-            </li>
+            </li>                             
             <li>
-              <a href="getAllStudent.html">
-              <span><i class="fa-solid fa-users"></i></span>GetAllStudent</a>
-              
-            </li>
+              <a href="getInstructorStudents.html">
+                <span><i class="fa-solid fa-users"></i></span>Students</a
+              >
+            </li>           
             <li>
               <a href="addExam.html"
-                ><span><i class="fa-solid fa-pen-to-square"></i></span
-                >AddExam</a
+                ><span><i class="fa-solid fa-book"></i></span>Add Exams</a
+              >
+            </li>                 
+            <li>
+              <a href="../auth/appLoginScreen.html"
+                ><span><i class="fa-solid fa-sign-out"></i></span
+                >Log out</a
               >
             </li>
           </ul>
         </div>
       </div>
       <div class="stu-child col-md-8 col-sm-11">
-      <div class="row register-form">
-        <div class="col-md-8 offset-md-2">
+        <div class="row register-form">
+          <div class="col-md-8 offset-md-2">
             <form class="custom-form">
-                <h1>Add student</h1>
-                <div  class="row form-group cust-form">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="fname-input-field">First Name </label></div>
-                    <div class="col-sm-6 input-column"><input id="fname-input-field" class="form-control" type="text"></div>
+              <h1>Add Student</h1>
+              <div class="row form-group cust-form">
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="fname-input-field"
+                    >First Name
+                  </label>
                 </div>
-                <div class="row form-group cust-form">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="lname-input-field">Last Name </label></div>
-                    <div class="col-sm-6 input-column"><input id="lname-input-field" class="form-control" type="text"></div>
+                <div class="col-sm-6 input-column">
+                  <input
+                    id="fname-input-field"
+                    class="form-control"
+                    type="text"
+                  />
                 </div>
-                <div class="row form-group cust-form">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Email </label></div>
-                    <div class="col-sm-6 input-column"><input id="email-input-field" class="form-control" type="email"></div>
+              </div>
+              <div class="row form-group cust-form">
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="lname-input-field"
+                    >Last Name
+                  </label>
                 </div>
-                <div class="row form-group cust-form">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Password </label></div>
-                    <div class="col-sm-6 input-column"><input id="pawssword-input-field" class="form-control" type="password"></div>
+                <div class="col-sm-6 input-column">
+                  <input
+                    id="lname-input-field"
+                    class="form-control"
+                    type="text"
+                  />
                 </div>
-                <div class="row form-group cust-form">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="phone-input-field">phone Number </label></div>
-                    <div class="col-sm-6 input-column"><input id="phone-input-field" class="form-control" type="tel"></div>
+              </div>
+              <div class="row form-group cust-form">
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="email-input-field"
+                    >Email
+                  </label>
                 </div>
-                <button type="button" class="btn btn-success cust-form">Add</button>
+                <div class="col-sm-6 input-column">
+                  <input
+                    id="email-input-field"
+                    class="form-control"
+                    type="email"
+                  />
+                </div>
+              </div>
+              <div class="row form-group cust-form">
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="pawssword-input-field"
+                    >Password
+                  </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                  <input
+                    id="pawssword-input-field"
+                    class="form-control"
+                    type="password"
+                  />
+                </div>
+              </div>
+              <div class="row form-group cust-form">
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="phone-input-field"
+                    >phone Number
+                  </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                  <input
+                    id="phone-input-field"
+                    class="form-control"
+                    type="tel"
+                  />
+                </div>
+              </div>
+
+              <div class="row form-group cust-form">
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="salary-input-field"
+                    >salary
+                  </label>
+                </div>               
+              </div>                          
+              <input
+                id="add-instructor"
+                type="submit"
+                class="btn btn-success cust-form"
+                value="add"
+              />
             </form>
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/all.min.js"></script>
     <script src="../js/Sidebar-Menu.js"></script>
+    <script type="module" src="../js/instructor/addStudent.js"></script>
   </body>
 </html>
