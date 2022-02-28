@@ -40,7 +40,7 @@
         - result not take more than 5 seconds to show up . 
         - if he has problem with his result he can check his answers using `Student Answer Exam history Report` and he will get all what he or she has done in the exam . 
         - he can follow up his progression in each exam . `track using Exam history table`
-    # `Any` thing else `not` mentioned `above` ? `out of our score` .. sorry for that . 
+    # `Any` thing else `not` mentioned `above` ? `out of our scope` .. sorry for that . 
     # `Plans ?` Oh yeah we have .. we wanna make the `instructor` able to `publish` to his `students` exams and run a timer on a `SOCKET.IO`
 - ## why not all what u expect not included ? 
     1. we were running out of time . 
