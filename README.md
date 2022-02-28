@@ -50,8 +50,11 @@
     5. `Angular` hide on push 😂
 # Project ( dev names and rules )   📢 `US` : 
 - `Eng ahmed gamal` .. `full stack`
+![my link](https://github.com/ahmedgamalelazab)
 - `Eng Reem Khalil` .. `Backend`
+![reem link](https://github.com/Reem395)
 - `Eng Yasser Abdelhady` .. `Backend`
+![yasser link](https://github.com/Yasser-Abd-El-Hady)
 - `Eng Ahmed Esmail` .. `frontend`
 - `Eng Abrar` .. `frontend`
 
