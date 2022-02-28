@@ -3,7 +3,7 @@
     - system config :
         1. make sure your system has mssql... because this application build upon mssql data base
         2. make sure ur database connection allow tcp .
-        3. create a user using `WIZARD` or whatever but make sure that the userName and password root .
+        3. create a user using `WIZARD` or whatever but make sure that the userName and password = `root` .
         4. create Database call it `ExamDB`
     - what next ? 😂 follow me ! :
         1. download the app or clone it .
