@@ -45,7 +45,7 @@
 - ## why not all what u expect not included ? 
     1. we were running out of time . 
     2. `huge pressure` , `loads` and etc .. from `ITI` .
-    3. we were working on `2` projects and remain one more . 
+    3. we were working on `2` projects and still remains one more . 
     4. we are in middle of framework season in `ITI` .
     5. `Angular` hide on push 😂
 # Project ( dev names and rules )   📢 `US` : 
