@@ -27,7 +27,7 @@
                 - u need to have `config.env` and `include` it in ur project then add some `secrets` of ur own and `ports` and etc .. extra details to have special tokens and protected roles on the server .. `why i didn't upload it ?` because i must not do it .. `it's a bad practice of deploy` .. but it u are our master then i can share the file with u and the server after it will run immediately .
         5. if the server runs well , u will be ok to run the client and test whatever u want . 
 # Out of our scope : 
-- we supported only those features any not : 
+- we supported only those features : 
     1. `Authentication and Authorization` :
         - our app register users following a hierarchy of rules . 
         - each user can login and get different screen .
