@@ -11,6 +11,7 @@ const {
   insertDepartment,
   deleteDepartmentRecordProc,
   updateDepartmentRecordProc,
+  getDepartmentStudentsReport,
 } = require('../procedures/Departments.js');
 
 /**
@@ -219,6 +220,37 @@ module.exports.deleteDepartment = async function (dept_id) {
           object : dbPoolConnection,
           function:${DBProcedureDictionary.deleteDepartmentById}
       }`);
+    }
+  });
+};
+
+module.exports.getDepartmentStudents = async function (dept_id) {
+  return new Promise(async (resolve, reject) => {
+    if (MSSQLConnection.pool.connected) {
+      try {
+        await getDepartmentStudentsReport();
+
+        // if proc created or altered !
+
+        MSSQLConnection.pool
+          .request()
+          .input('dept_id', dept_id)
+          .execute(
+            DBProcedureDictionary.getDepartmentStudentsById,
+            (error, recordSets, returnValues) => {
+              if (error) {
+                reject(error);
+                return;
+              }
+              //else
+              resolve(recordSets.recordset);
+            }
+          );
+      } catch (err) {
+        reject(err);
+      }
+    } else {
+      reject(new Error(`u must connect to the db to execute this query`));
     }
   });
 };

@@ -4,6 +4,7 @@ const {
   insertDepartmentController,
   deleteDepartmentController,
   updateDepartmentRecordController,
+  getDepartmentStudentByIdController,
 } = require('../controller/Departments.controller.js');
 
 const { authMiddleWere } = require('../middleware/auth.js');
@@ -12,6 +13,10 @@ const { authMiddleWere } = require('../middleware/auth.js');
 Router.route('/ExamApp/api/v1/Departments').get(
   authMiddleWere,
   getAllDepartments
+);
+Router.route('/ExamApp/api/v1/Departments/students').get(
+  authMiddleWere,
+  getDepartmentStudentByIdController
 );
 
 Router.route('/ExamApp/api/v1/Departments').post(

@@ -5,6 +5,7 @@ const sql = require('mssql');
 const {
   MSSQLConnection,
 } = require('../database/nativeConnection/dbNativeConnection.js');
+const tableNames = require('../database/tables/tables.js');
 
 module.exports.createSelectAllDepartmentsProc = async function () {
   return new Promise(async (resolve, reject) => {
@@ -168,6 +169,45 @@ module.exports.deleteDepartmentRecordProc = async function () {
               function: ${DBProcedureDictionary.deleteDepartmentById}
           }`,
       });
+    }
+  });
+};
+
+/**
+ *
+ * @desc  create stored procedure to get all the students registered in specific department
+ */
+module.exports.getDepartmentStudentsReport = async function () {
+  return new Promise(async (resolve, reject) => {
+    if (MSSQLConnection.pool.connected) {
+      try {
+        await MSSQLConnection.pool.request().query(`
+                CREATE OR ALTER PROC ${DBProcedureDictionary.getDepartmentStudentsById}
+                (
+                  @dept_id as int
+                )
+                AS
+                BEGIN
+                    select
+                    ${tableNames.student}.id as "student_id",
+                    ${tableNames.mainUser}.first_name as "student_first_name",
+                    ${tableNames.mainUser}.last_name as "student_last_name",
+                    ${tableNames.mainUser}.email as "student_email",
+                    ${tableNames.department}.name as "student_department"
+                    from ${tableNames.student} , ${tableNames.mainUser} , ${tableNames.department}
+                    where ${tableNames.mainUser}.id = ${tableNames.student}.user_id
+                    AND ${tableNames.student}.dept_id = ${tableNames.department}.id
+                    AND ${tableNames.student}.dept_id = @dept_id;
+                END            
+            `);
+        //if all are ok
+        resolve('proc created');
+      } catch (error) {
+        console.log(error);
+        reject(error);
+      }
+    } else {
+      reject(new Error(`u must be conned with the db before making this proc`));
     }
   });
 };

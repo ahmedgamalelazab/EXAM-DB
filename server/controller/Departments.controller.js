@@ -4,6 +4,7 @@ const {
   insertDepartmentRecord,
   deleteDepartment,
   updateDepartment,
+  getDepartmentStudents,
 } = require('../quries/Department.js');
 
 /**
@@ -129,6 +130,27 @@ module.exports.deleteDepartmentController = async (req, res, next) => {
         message: 'error with req.param',
       });
     }
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'forbidden',
+    });
+  }
+};
+
+/**
+ *
+ * @param {request} req
+ * @param {response} res
+ */
+module.exports.getDepartmentStudentByIdController = async (req, res, next) => {
+  if (req.payload.userType === 'admin') {
+    const deptId = req.query.dept_id;
+    const result = await getDepartmentStudents(deptId);
+    res.status(200).json({
+      success: true,
+      data: result,
+    });
   } else {
     res.status(403).json({
       success: false,
