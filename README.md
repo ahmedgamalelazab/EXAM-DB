@@ -1,11 +1,11 @@
 # project Build commands : 
-- # how two release the beast ? 😂
+- # how two release the beast ? 
     - system config :
         1. make sure your system has mssql... because this application build upon mssql data base
         2. make sure ur database connection allow tcp .
         3. create a user using `WIZARD` or whatever but make sure that the userName and password = `root` .
         4. create Database call it `ExamDB`
-    - what next ? 😂 follow me ! :
+    - what next ?  follow me ! :
         1. download the app or clone it .
         2. in the same folder open vscode using this command `code .`
         3. make sure that u are in Exam-DB folder .
@@ -26,6 +26,7 @@
             - `npm run dev` it will run the server .. but the server won't launch and u will get a bunch of errors why ? 
                 - u need to have `config.env` and `include` it in ur project then add some `secrets` of ur own and `ports` and etc .. extra details to have special tokens and protected roles on the server .. `why i didn't upload it ?` because i must not do it .. `it's a bad practice of deploy` .. but it u are our master then i can share the file with u and the server after it will run immediately .
         5. if the server runs well , u will be ok to run the client and test whatever u want . 
+        6. updated : server configs is now on the github .. but still bad practise but that will help .. to run the project directly without the need of asking for keys ..
 # Out of our scope : 
 - we supported only those features : 
     1. `Authentication and Authorization` :
